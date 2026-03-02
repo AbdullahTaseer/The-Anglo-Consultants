@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Nunito, Playfair_Display } from "next/font/google";
-import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import "./globals.css";
 
 const nunito = Nunito({
   subsets: ["latin"],
