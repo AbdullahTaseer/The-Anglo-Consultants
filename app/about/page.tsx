@@ -1,8 +1,9 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import ApplyPopup from "@/components/ApplyPopup";
 import { Landmark, Handshake, GraduationCap, ClipboardList, Scale, Target, Heart } from "lucide-react";
+import { useHeroAnimation, useScrollFadeUp, useStaggerReveal, useSplitReveal } from "@/lib/gsap-animations";
 
 const values = [
   {
@@ -35,16 +36,25 @@ const achievements = [
 export default function AboutPage() {
   const [popupOpen, setPopupOpen] = useState(false);
 
+  const heroRef       = useHeroAnimation();
+  const overviewRef   = useSplitReveal();
+  const historyRef    = useScrollFadeUp();
+  const founderRef    = useSplitReveal();
+  const valuesRef     = useStaggerReveal();
+  const achieveRef    = useSplitReveal();
+  const missionRef    = useStaggerReveal();
+
   return (
     <>
       {/* Hero */}
       <div
+        ref={heroRef}
         style={{
           background: `linear-gradient(135deg, rgba(11,28,45,0.97) 0%, rgba(11,28,45,0.80) 100%), url('https://images.unsplash.com/photo-1496016943515-7d33598c11e6?w=1800&q=80') center/cover no-repeat`,
           padding: "6rem 0 5rem",
         }}
       >
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center gs-hero">
           <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">
             About Nova-Turk
           </div>
@@ -73,10 +83,10 @@ export default function AboutPage() {
       <div style={{ height: "4px", background: "linear-gradient(to right, var(--gold), rgba(212,175,55,0.1))" }} />
 
       {/* Company Overview */}
-      <section style={{ background: "#fff", padding: "5rem 0" }}>
+      <section ref={overviewRef as React.RefObject<HTMLElement>} style={{ background: "#fff", padding: "5rem 0" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div>
+            <div className="gs-left">
               <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Who We Are</div>
               <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline mt-2" style={{ marginBottom: "1.5rem" }}>
                 Nova-Turk Education
@@ -91,7 +101,7 @@ export default function AboutPage() {
                 By specializing 100% in Türkiye, Nova-Turk has developed deep insight into university expectations, documentation standards, and consular requirements—transforming complex processes into clear pathways.
               </p>
             </div>
-            <div style={{ position: "relative" }}>
+            <div className="gs-right" style={{ position: "relative" }}>
               <img
                 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80"
                 alt="Education consultation"
@@ -114,8 +124,8 @@ export default function AboutPage() {
       </section>
 
       {/* Our History */}
-      <section style={{ background: "var(--bg)", padding: "5rem 0" }}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <section ref={historyRef as React.RefObject<HTMLElement>} style={{ background: "var(--bg)", padding: "5rem 0" }}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center gs-fade">
           <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Our Story</div>
           <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline-center mt-2" style={{ marginBottom: "1.5rem" }}>
             Built on Conviction
@@ -128,6 +138,7 @@ export default function AboutPage() {
 
       {/* Founder's Full Message */}
       <section
+        ref={founderRef as React.RefObject<HTMLElement>}
         style={{
           background: `linear-gradient(135deg, rgba(11,28,45,0.97) 0%, rgba(11,28,45,0.93) 100%), url('https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=1800&q=80') center/cover no-repeat`,
           padding: "6rem 0",
@@ -136,7 +147,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
             {/* Left Visual */}
-            <div className="lg:col-[span_2]">
+            <div className="lg:col-[span_2] gs-left">
               <img
                 src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=700&q=80"
                 alt="Founder"
@@ -157,7 +168,7 @@ export default function AboutPage() {
             </div>
 
             {/* Right Message */}
-            <div className="lg:col-[span_3]">
+            <div className="lg:col-[span_3] gs-right">
               <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">
                 Message from the Founder
               </div>
@@ -195,9 +206,9 @@ export default function AboutPage() {
       </section>
 
       {/* Nova Standard Values */}
-      <section style={{ background: "#fff", padding: "5rem 0" }}>
+      <section ref={valuesRef as React.RefObject<HTMLElement>} style={{ background: "#fff", padding: "5rem 0" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 gs-stagger">
             <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Core Values</div>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline-center mt-2">
               The "Nova" Standard
@@ -207,7 +218,7 @@ export default function AboutPage() {
             {values.map((val) => (
               <div
                 key={val.title}
-                className="group rounded-lg text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
+                className="gs-stagger group rounded-lg text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl"
                 style={{
                   padding: "2rem 1.75rem",
                   background: "var(--bg)",
@@ -232,10 +243,10 @@ export default function AboutPage() {
       </section>
 
       {/* Expertise & Achievements */}
-      <section style={{ background: "var(--bg)", padding: "5rem 0" }}>
+      <section ref={achieveRef as React.RefObject<HTMLElement>} style={{ background: "var(--bg)", padding: "5rem 0" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div>
+            <div className="gs-left">
               <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Track Record</div>
               <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline mt-2" style={{ marginBottom: "1.5rem" }}>
                 Our Expertise & Key Achievements
@@ -263,7 +274,7 @@ export default function AboutPage() {
             </div>
 
             {/* Islamabad Office */}
-            <div>
+            <div className="gs-right">
               <div style={{
                 borderRadius: "8px", overflow: "hidden",
                 boxShadow: "0 20px 60px rgba(11,28,45,0.12)"
@@ -298,8 +309,8 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Section */}
-      <section style={{ background: "var(--navy)", padding: "5rem 0" }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <section ref={missionRef as React.RefObject<HTMLElement>} style={{ background: "var(--navy)", padding: "5rem 0" }}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center gs-stagger">
           <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Our Mission</div>
           <h2 style={{
             fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)",

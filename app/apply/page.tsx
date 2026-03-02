@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Target, ClipboardList, Plane, Handshake } from "lucide-react";
+import { useHeroAnimation, useScaleIn, useStaggerReveal } from "@/lib/gsap-animations";
 import {
   Select,
   SelectTrigger,
@@ -51,16 +52,21 @@ export default function ApplyPage() {
 
   const progress = step === 0 ? 50 : 100;
 
+  const heroRef   = useHeroAnimation();
+  const formRef   = useScaleIn();
+  const whyRef    = useStaggerReveal();
+
   return (
     <>
       {/* Hero */}
       <div
+        ref={heroRef}
         style={{
           background: `linear-gradient(135deg, rgba(11,28,45,0.98) 0%, rgba(11,28,45,0.90) 100%), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1800&q=80') center/cover no-repeat`,
           padding: "5rem 0 4rem",
         }}
       >
-        <div className="max-w-xl mx-auto px-4 sm:px-6 text-center">
+        <div className="max-w-xl mx-auto px-4 sm:px-6 text-center gs-hero">
           <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">
             Application Portal
           </div>
@@ -87,7 +93,7 @@ export default function ApplyPage() {
       <section className="bg-bg py-16 pb-24">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           {!submitted ? (
-            <div className="bg-white rounded-xl border border-navy/10 shadow-[0_20px_60px_rgba(11,28,45,0.08)] overflow-hidden">
+            <div ref={formRef} className="bg-white rounded-xl border border-navy/10 shadow-[0_20px_60px_rgba(11,28,45,0.08)] overflow-hidden">
               {/* Progress Header */}
               <div className="bg-navy px-8 py-6">
                 <div className="flex gap-2 mb-3">
@@ -272,9 +278,9 @@ export default function ApplyPage() {
       </section>
 
       {/* Why Apply Through Nova-Turk */}
-      <section className="bg-navy py-16">
+      <section ref={whyRef as React.RefObject<HTMLElement>} className="bg-navy py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold text-white mb-10">Why Apply Through Nova-Turk?</h2>
+          <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold text-white mb-10 gs-stagger">Why Apply Through Nova-Turk?</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { Icon: Target,        title: "100% Türkiye Focus", desc: "No generalist advice. Deep Turkish academic expertise." },
@@ -282,7 +288,7 @@ export default function ApplyPage() {
               { Icon: Plane,         title: "Visa Support",       desc: "Expert consulate filing with high approval rates." },
               { Icon: Handshake,     title: "Free Service",       desc: "Our guidance is completely free for students." },
             ].map((item) => (
-              <div key={item.title} className="text-center px-4 py-6">
+              <div key={item.title} className="gs-stagger text-center px-4 py-6">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-white/10 mb-3">
                   <item.Icon size={22} strokeWidth={1.8} color="var(--gold)" />
                 </div>

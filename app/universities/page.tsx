@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { universities } from "@/lib/data";
 import ApplyPopup from "@/components/ApplyPopup";
 import UniversityCard from "@/components/UniversityCard";
@@ -10,6 +10,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
+import { useHeroAnimation, useStaggerReveal, useCardReveal } from "@/lib/gsap-animations";
 
 /* ── Animated counter hook ── */
 function useCountUp(target: number, duration = 1400) {
@@ -63,6 +64,10 @@ export default function UniversitiesPage() {
   const [popupOpen, setPopupOpen] = useState(false);
   const [selectedUni, setSelectedUni] = useState<string>("");
 
+  const heroRef  = useHeroAnimation();
+  const gridRef  = useCardReveal();
+  const ctaRef   = useStaggerReveal();
+
   const cities = ["ALL", ...Array.from(new Set(universities.map((u) => u.city)))];
   const totalPrograms = universities.reduce(
     (acc, u) => acc + u.faculties.reduce((a, f) => a + f.programs.length, 0),
@@ -88,12 +93,13 @@ export default function UniversitiesPage() {
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
       <div
+        ref={heroRef}
         style={{
           background: `linear-gradient(135deg, rgba(11,28,45,0.97) 0%, rgba(11,28,45,0.82) 100%), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1800&q=80') center/cover no-repeat`,
           padding: "5.5rem 0 4.5rem",
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center gs-hero">
           <div
             className="inline-flex items-center gap-2 mb-5"
             style={{
@@ -305,7 +311,7 @@ export default function UniversitiesPage() {
       </div>
 
       {/* ── University Grid ───────────────────────────────── */}
-      <section style={{ background: "var(--bg)", padding: "3rem 0 4rem" }}>
+      <section ref={gridRef as React.RefObject<HTMLElement>} style={{ background: "var(--bg)", padding: "3rem 0 4rem" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {filtered.length === 0 ? (
             <div
@@ -334,6 +340,7 @@ export default function UniversitiesPage() {
                 <UniversityCard
                   key={uni.id}
                   uni={uni}
+                  className="gs-card"
                   onFeeRequest={handleRequestFee}
                 />
               ))}
@@ -344,6 +351,7 @@ export default function UniversitiesPage() {
 
       {/* ── Bottom CTA ───────────────────────────────────── */}
       <section
+        ref={ctaRef as React.RefObject<HTMLElement>}
         style={{
           background: `linear-gradient(135deg, var(--navy) 0%, #122840 100%)`,
           padding: "5rem 0",
@@ -379,7 +387,7 @@ export default function UniversitiesPage() {
 
         <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center" style={{ position: "relative" }}>
           <div
-            className="inline-flex items-center gap-2 mb-5"
+            className="gs-stagger inline-flex items-center gap-2 mb-5"
             style={{
               background: "rgba(212,175,55,0.12)",
               border: "1px solid rgba(212,175,55,0.25)",
@@ -394,7 +402,7 @@ export default function UniversitiesPage() {
           </div>
 
           <h2
-            className="font-display"
+            className="gs-stagger font-display"
             style={{
               fontSize: "clamp(1.7rem, 3.5vw, 2.4rem)",
               fontWeight: 700,
@@ -405,12 +413,12 @@ export default function UniversitiesPage() {
           >
             Not Sure Which University<br className="hidden sm:block" /> Is Right for You?
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.75, marginBottom: "2rem", fontSize: "0.95rem" }}>
+          <p className="gs-stagger" style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.75, marginBottom: "2rem", fontSize: "0.95rem" }}>
             Our specialists match you with the perfect institution based on your academic profile, budget, and career goals.
           </p>
           <button
             onClick={() => setPopupOpen(true)}
-            className="btn-gold"
+            className="gs-stagger btn-gold"
             style={{ fontSize: "0.95rem", textTransform: "none", padding: "0.85rem 2.2rem" }}
           >
             Get a Free Consultation

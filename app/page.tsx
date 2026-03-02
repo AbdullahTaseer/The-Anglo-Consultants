@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import ApplyPopup from "@/components/ApplyPopup";
 import { universities } from "@/lib/data";
@@ -14,23 +14,15 @@ import {
   Landmark,
   Wallet,
   MapPinned,
-  ArrowRight,
 } from "lucide-react";
 import UniversityCard from "@/components/UniversityCard";
-
-function useInView(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, visible };
-}
+import {
+  useHeroAnimation,
+  useScrollFadeUp,
+  useStaggerReveal,
+  useCardReveal,
+  useSplitReveal,
+} from "@/lib/gsap-animations";
 
 const steps = [
   { num: "01", Icon: Search,       title: "Discovery",       desc: "Profile assessment to understand your dream and academic direction." },
@@ -68,12 +60,12 @@ const featuredUnis = universities.slice(0, 3);
 
 export default function HomePage() {
   const [popupOpen, setPopupOpen] = useState(false);
-  const heroRef = useRef<HTMLDivElement>(null);
-  const trustRef = useInView();
-  const roadmapRef = useInView(0.05);
-  const whyRef = useInView();
-  const uniRef = useInView();
-  const founderRef = useInView();
+  const heroRef    = useHeroAnimation();
+  const trustRef   = useScrollFadeUp();
+  const roadmapRef = useStaggerReveal();
+  const whyRef     = useStaggerReveal();
+  const uniRef     = useCardReveal();
+  const founderRef = useSplitReveal();
 
   return (
     <>
@@ -97,7 +89,7 @@ export default function HomePage() {
           background: "linear-gradient(to right, var(--gold), transparent)"
         }} />
 
-        {/* Decorative circle */}
+        {/* Decorative circles */}
         <div style={{
           position: "absolute", right: "-100px", top: "50%", transform: "translateY(-50%)",
           width: "600px", height: "600px", borderRadius: "50%",
@@ -110,46 +102,40 @@ export default function HomePage() {
         }} />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full py-24">
-          <div className="max-w-3xl">
-            {/* Tag */}
-            <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+          {/* gs-hero: GSAP animates direct children with stagger */}
+          <div className="max-w-3xl gs-hero">
+            <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">
               Islamabad · Türkiye · Excellence
             </div>
 
-            {/* Main Headline */}
             <h1
-              className="animate-fade-up font-display"
+              className="font-display"
               style={{
                 fontSize: "clamp(2.6rem, 5.5vw, 4.4rem)",
                 fontWeight: 700,
                 color: "#fff",
                 lineHeight: 1.12,
                 marginBottom: "1.5rem",
-                animationDelay: "0.2s",
               }}
             >
               Lighting the Path to{" "}
               <span style={{ color: "var(--gold)", fontStyle: "italic" }}>Turkish Academia.</span>
             </h1>
 
-            {/* Sub-headline */}
             <p
-              className="animate-fade-up"
               style={{
                 fontSize: "clamp(1rem, 2vw, 1.2rem)",
                 color: "rgba(255,255,255,0.82)",
                 maxWidth: "600px",
                 lineHeight: 1.7,
                 marginBottom: "2.5rem",
-                animationDelay: "0.35s",
               }}
             >
               Specialized guidance for Pakistani students aspiring to Undergraduate,
               Postgraduate, and PhD excellence in Türkiye.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: "0.5s" }}>
+            <div className="flex flex-wrap gap-4">
               <Link href="/apply" className="btn-red" style={{ fontSize: "1rem" }}>
                 Apply Now
               </Link>
@@ -158,11 +144,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Stats Bar */}
-            <div
-              className="mt-14 grid grid-cols-3 gap-8 max-w-lg animate-fade-up"
-              style={{ animationDelay: "0.65s" }}
-            >
+            <div className="mt-14 grid grid-cols-3 gap-8 max-w-lg">
               {[
                 { val: "100%", label: "Türkiye Focused" },
                 { val: "16+", label: "Partner Universities" },
@@ -199,18 +181,17 @@ export default function HomePage() {
           SECTION 2 — TRUST BAR
       ═══════════════════════════════════════════ */}
       <div
-        ref={trustRef.ref}
-        className={`observe-fade ${trustRef.visible ? "visible" : ""}`}
+        ref={trustRef as React.RefObject<HTMLDivElement>}
         style={{ background: "#fff", borderBottom: "1px solid rgba(11,28,45,0.08)", padding: "1.5rem 0" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col items-center gap-3 text-center md:flex-row md:justify-between md:text-left">
-            <p style={{ color: "#888", fontSize: "0.78rem", letterSpacing: "0.07em", textTransform: "uppercase", fontWeight: 600 }}>
+            <p className="gs-fade" style={{ color: "#888", fontSize: "0.78rem", letterSpacing: "0.07em", textTransform: "uppercase", fontWeight: 600 }}>
               Degrees Recognized by HEC Pakistan & Globally via Bologna Process
             </p>
             <div className="flex flex-wrap justify-center md:justify-end items-center gap-2 md:gap-4">
-              {["HEC Pakistan", "YÖK Türkiye", "Bologna Process", "Ministry of Education"].map((name, i) => (
-                <div key={name} className={`observe-fade ${trustRef.visible ? "visible" : ""} observe-fade-delay-${i + 1}`}>
+              {["HEC Pakistan", "YÖK Türkiye", "Bologna Process", "Ministry of Education"].map((name) => (
+                <div key={name} className="gs-fade">
                   <div style={{
                     background: "var(--bg)", border: "1px solid rgba(11,28,45,0.1)", borderRadius: "6px",
                     padding: "0.4rem 1rem", fontWeight: 700, fontSize: "0.72rem",
@@ -229,12 +210,12 @@ export default function HomePage() {
           SECTION 3 — 6-STEP ROADMAP
       ═══════════════════════════════════════════ */}
       <section
-        ref={roadmapRef.ref}
+        ref={roadmapRef as React.RefObject<HTMLElement>}
         style={{ background: "var(--navy)", padding: "5rem 0" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {/* Heading */}
-          <div className={`text-center mb-14 observe-fade ${roadmapRef.visible ? "visible" : ""}`}>
+          <div className="text-center mb-14 gs-stagger">
             <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">
               Our Proven Process
             </div>
@@ -248,10 +229,10 @@ export default function HomePage() {
 
           {/* Steps Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 sm:gap-6">
-            {steps.map((step, i) => (
+            {steps.map((step) => (
               <div
                 key={step.num}
-                className={`observe-fade observe-fade-delay-${i + 1} ${roadmapRef.visible ? "visible" : ""} text-center group`}
+                className="gs-stagger text-center group"
               >
                 {/* Icon Circle */}
                 <div className="relative mx-auto mb-4 flex items-center justify-center w-16 h-16 rounded-full transition-all duration-300 group-hover:scale-110"
@@ -289,10 +270,10 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           SECTION 4 — WHY TÜRKIYE
       ═══════════════════════════════════════════ */}
-      <section ref={whyRef.ref} style={{ background: "var(--bg)" }} className="py-16">
+      <section ref={whyRef as React.RefObject<HTMLElement>} style={{ background: "var(--bg)" }} className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className={`text-center mb-12 observe-fade ${whyRef.visible ? "visible" : ""}`}>
-              <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Why Türkiye</div>
+          <div className="text-center mb-12 gs-stagger">
+            <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Why Türkiye</div>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline-center mt-2">
               Why Pakistani Students Choose Türkiye
             </h2>
@@ -301,10 +282,10 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {whyCards.map((card, i) => (
+            {whyCards.map((card) => (
               <div
                 key={card.title}
-                className={`why-card observe-fade observe-fade-delay-${i + 1} ${whyRef.visible ? "visible" : ""}`}
+                className="why-card gs-stagger"
               >
                 <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-lg"
                   style={{ background: "rgba(11,28,45,0.06)" }}>
@@ -323,9 +304,9 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           SECTION 5 — FEATURED INSTITUTIONS
       ═══════════════════════════════════════════ */}
-      <section ref={uniRef.ref} style={{ background: "#fff" }} className="py-20">
+      <section ref={uniRef as React.RefObject<HTMLElement>} style={{ background: "#fff" }} className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className={`flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 observe-fade ${uniRef.visible ? "visible" : ""}`}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 gs-stagger">
             <div>
               <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-2">Partner Institutions</div>
               <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline mt-2">Featured Universities</h2>
@@ -336,11 +317,11 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-            {featuredUnis.map((uni, i) => (
+            {featuredUnis.map((uni) => (
               <UniversityCard
                 key={uni.id}
                 uni={uni}
-                className={`observe-fade observe-fade-delay-${i + 1} ${uniRef.visible ? "visible" : ""}`}
+                className="gs-card"
                 onFeeRequest={() => setPopupOpen(true)}
               />
             ))}
@@ -352,7 +333,7 @@ export default function HomePage() {
           SECTION 6 — FOUNDER'S MESSAGE
       ═══════════════════════════════════════════ */}
       <section
-        ref={founderRef.ref}
+        ref={founderRef as React.RefObject<HTMLElement>}
         style={{
           background: `linear-gradient(135deg, rgba(11,28,45,0.97) 0%, rgba(11,28,45,0.92) 100%), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1800&q=80') center/cover no-repeat`,
           padding: "5rem 0"
@@ -360,8 +341,8 @@ export default function HomePage() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left: Logo + Image */}
-            <div className={`observe-fade ${founderRef.visible ? "visible" : ""}`}>
+            {/* Left */}
+            <div className="gs-left">
               <div style={{ position: "relative", borderRadius: "8px", overflow: "hidden", maxWidth: "460px" }}>
                 <img
                   src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80"
@@ -396,7 +377,7 @@ export default function HomePage() {
             </div>
 
             {/* Right: Quote */}
-            <div className={`observe-fade observe-fade-delay-2 ${founderRef.visible ? "visible" : ""}`}>
+            <div className="gs-right">
               <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">
                 A Word from our Founder
               </div>
@@ -454,7 +435,7 @@ export default function HomePage() {
             letterSpacing: "0.08em",
           }}
         >
-          Apply Now ↑
+          Apply Now 
         </button>
       </div>
 

@@ -1,5 +1,5 @@
 "use client";
-import { useState, Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { universities } from "@/lib/data";
 import ApplyPopup from "@/components/ApplyPopup";
@@ -18,6 +18,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { Search } from "lucide-react";
+import { useHeroAnimation, useScrollFadeUp, useStaggerReveal } from "@/lib/gsap-animations";
 
 const LEVEL_COLORS: Record<string, { bg: string; color: string }> = {
   UG:  { bg: "#e8f4f8", color: "#0B5394" },
@@ -148,16 +149,21 @@ function ProgramsContent() {
 
   const hasActiveFilter = search !== "" || levelFilter !== "ALL" || selectedUniFilter !== "ALL";
 
+  const heroRef    = useHeroAnimation();
+  const listRef    = useScrollFadeUp(".gs-fade");
+  const ctaRef     = useStaggerReveal();
+
   return (
     <>
       {/* ── Hero ── */}
       <div
+        ref={heroRef}
         style={{
           background: `linear-gradient(135deg, rgba(11,28,45,0.97) 0%, rgba(11,28,45,0.82) 100%), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1800&q=80') center/cover no-repeat`,
           padding: "5.5rem 0 4.5rem",
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center gs-hero">
           <div
             className="inline-flex items-center gap-2 mb-5"
             style={{
@@ -407,7 +413,7 @@ function ProgramsContent() {
       </div>
 
       {/* ── Programs List ── */}
-      <section style={{ background: "var(--bg)", padding: "3rem 0 4rem" }}>
+      <section ref={listRef as React.RefObject<HTMLElement>} style={{ background: "var(--bg)", padding: "3rem 0 4rem" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {displayData.length === 0 ? (
             <div
@@ -434,6 +440,7 @@ function ProgramsContent() {
               {displayData.map((uni) => (
                 <div
                   key={uni.id}
+                  className="gs-fade"
                   style={{
                     background: "#fff",
                     borderRadius: 16,
@@ -577,6 +584,7 @@ function ProgramsContent() {
 
       {/* ── Bottom CTA ── */}
       <section
+        ref={ctaRef as React.RefObject<HTMLElement>}
         style={{
           background: `linear-gradient(135deg, var(--navy) 0%, #122840 100%)`,
           padding: "5rem 0",
@@ -587,7 +595,7 @@ function ProgramsContent() {
         <div style={{ position: "absolute", top: "-80px", right: "-80px", width: 280, height: 280, borderRadius: "50%", background: "rgba(212,175,55,0.07)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: "-60px", left: "-60px", width: 200, height: 200, borderRadius: "50%", background: "rgba(212,175,55,0.05)", pointerEvents: "none" }} />
 
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center" style={{ position: "relative" }}>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center gs-stagger" style={{ position: "relative" }}>
           <div
             className="inline-flex items-center gap-2 mb-5"
             style={{
