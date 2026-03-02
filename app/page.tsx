@@ -16,6 +16,7 @@ import {
   MapPinned,
   ArrowRight,
 } from "lucide-react";
+import UniversityCard from "@/components/UniversityCard";
 
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -288,7 +289,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           SECTION 4 — WHY TÜRKIYE
       ═══════════════════════════════════════════ */}
-      <section ref={whyRef.ref} style={{ background: "var(--bg)" }}>
+      <section ref={whyRef.ref} style={{ background: "var(--bg)" }} className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className={`text-center mb-12 observe-fade ${whyRef.visible ? "visible" : ""}`}>
               <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Why Türkiye</div>
@@ -322,7 +323,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           SECTION 5 — FEATURED INSTITUTIONS
       ═══════════════════════════════════════════ */}
-      <section ref={uniRef.ref} style={{ background: "#fff" }}>
+      <section ref={uniRef.ref} style={{ background: "#fff" }} className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className={`flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 observe-fade ${uniRef.visible ? "visible" : ""}`}>
             <div>
@@ -334,60 +335,14 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {featuredUnis.map((uni, i) => (
-              <div
+              <UniversityCard
                 key={uni.id}
-                className={`uni-card flex flex-col observe-fade observe-fade-delay-${i + 1} ${uniRef.visible ? "visible" : ""}`}
-              >
-                {/* Image */}
-                <div className="relative overflow-hidden shrink-0" style={{ height: "200px" }}>
-                  <img
-                    src={uni.image}
-                    alt={uni.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(11,28,45,0.7))" }} />
-                  <div className="absolute bottom-3 left-3 text-[0.62rem] font-black tracking-widest uppercase px-2 py-0.5 rounded-sm"
-                    style={{ background: "var(--gold)", color: "var(--navy)" }}>
-                    {uni.city}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-col flex-1 p-5">
-                  <h3 className="font-bold text-[1.05rem] leading-snug mb-2" style={{ color: "var(--navy)" }}>
-                    {uni.name}
-                  </h3>
-                  <p className="text-[0.83rem] leading-relaxed mb-3" style={{ color: "#777" }}>
-                    {uni.description.slice(0, 90)}...
-                  </p>
-
-                  {/* Top Faculties */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {uni.topFaculties.slice(0, 3).map((f) => (
-                      <span key={f} className="text-[0.68rem] font-semibold px-2 py-0.5 rounded-sm border"
-                        style={{ background: "var(--bg)", color: "var(--navy)", borderColor: "rgba(11,28,45,0.1)" }}>
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex gap-2 mt-auto">
-                    <Link href="/universities" className="btn-red flex-1 text-center"
-                      style={{ fontSize: "0.8rem", padding: "0.6rem 0.5rem" }}>
-                      View Programs
-                    </Link>
-                    <button
-                      onClick={() => setPopupOpen(true)}
-                      className="btn-gold flex-1 text-center"
-                      style={{ fontSize: "0.8rem", padding: "0.6rem 0.5rem" }}
-                    >
-                      Request Details
-                    </button>
-                  </div>
-                </div>
-              </div>
+                uni={uni}
+                className={`observe-fade observe-fade-delay-${i + 1} ${uniRef.visible ? "visible" : ""}`}
+                onFeeRequest={() => setPopupOpen(true)}
+              />
             ))}
           </div>
         </div>
@@ -475,7 +430,7 @@ export default function HomePage() {
               </div>
 
               <Link href="/about" className="btn-gold" style={{ textTransform: "none" }}>
-                Read the Full Message →
+                Read the Full Message 
               </Link>
             </div>
           </div>
