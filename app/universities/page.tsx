@@ -116,7 +116,7 @@ export default function UniversitiesPage() {
           </div>
 
           <h1
-            className="font-display"
+            className="font-display tracking-wide"
             style={{
               fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
               fontWeight: 700,
@@ -126,7 +126,7 @@ export default function UniversitiesPage() {
             }}
           >
             Premier Institutions <br className="hidden sm:block" />
-            of <em style={{ color: "var(--gold)", fontStyle: "italic" }}>Türkiye</em>
+            of <em style={{ color: "var(--gold)", fontStyle: "italic" }}>Turkiye</em>
           </h1>
 
           <p

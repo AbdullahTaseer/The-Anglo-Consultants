@@ -66,18 +66,18 @@ export default function ApplyPage() {
           padding: "5rem 0 4rem",
         }}
       >
-        <div className="max-w-xl mx-auto px-4 sm:px-6 text-center gs-hero">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center gs-hero">
           <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">
             Application Portal
           </div>
           <h1
-            className="font-display"
+            className="font-display tracking-wider"
             style={{
               fontSize: "clamp(2rem, 4vw, 3.2rem)",
               fontWeight: 700,
               color: "#fff",
               marginTop: "1rem",
-              marginBottom: "0.75rem",
+              marginBottom: "1.75rem",
               lineHeight: 1.15,
             }}
           >

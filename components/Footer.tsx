@@ -70,7 +70,7 @@ export default function Footer() {
                   <Link href={link.href}
                     className="text-sm flex items-center gap-2 transition-colors duration-150 hover:text-white"
                     style={{ color: "rgba(255,255,255,0.60)" }}>
-                    <span style={{ color: "var(--gold)" }}><ChevronRight size={16}/></span>
+                    <span style={{ color: "var(--gold)" }}><ChevronRight size={16} /></span>
                     {link.label}
                   </Link>
                 </li>
@@ -87,7 +87,7 @@ export default function Footer() {
                   <Link href="/universities"
                     className="text-sm flex items-center gap-2 transition-colors duration-150 hover:text-white"
                     style={{ color: "rgba(255,255,255,0.60)" }}>
-                    <span style={{ color: "var(--gold)" }}><ChevronRight size={16}/></span>
+                    <span style={{ color: "var(--gold)" }}><ChevronRight size={16} /></span>
                     {uni}
                   </Link>
                 </li>
@@ -119,16 +119,7 @@ export default function Footer() {
               </li>
             </ul>
 
-            <a href="#"
-              className="inline-flex items-center gap-2 text-xs font-bold px-4 py-2.5 rounded transition-colors duration-200 hover:bg-gold hover:text-navy"
-              style={{
-                border: "1.5px solid var(--gold)",
-                color: "var(--gold)",
-                width: "100%",
-                justifyContent: "center",
-              }}>
-               Download Company Profile
-            </a>
+            <a href="#" className="btn-gold">Download Company Profile</a>
           </div>
         </div>
 

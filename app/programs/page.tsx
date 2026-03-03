@@ -180,7 +180,7 @@ function ProgramsContent() {
           </div>
 
           <h1
-            className="font-display"
+            className="font-display tracking-wider"
             style={{
               fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
               fontWeight: 700,
