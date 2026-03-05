@@ -250,7 +250,7 @@ export default function ApplyPopup({ open, onClose, prefilledProgram }: ApplyPop
             )}
             <div className="mt-4 p-3 rounded bg-[#0B1C2D]/05">
               <p className="text-xs text-[#777]">
-                &ldquo;Your dream is no longer yours alone; from today, it is our shared mission.&rdquo;
+                 &ldquo;Your dream is no longer yours alone; from today, it is our shared mission.&rdquo;
               </p>
             </div>
             <button onClick={handleReset} className="mt-6 w-full inline-flex items-center justify-center bg-navy hover:bg-navy-light text-white font-bold py-3 rounded cursor-pointer transition-colors">
