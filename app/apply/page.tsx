@@ -59,31 +59,15 @@ export default function ApplyPage() {
   return (
     <>
       {/* Hero */}
-      <div
-        ref={heroRef}
-        style={{
-          background: `linear-gradient(135deg, rgba(11,28,45,0.98) 0%, rgba(11,28,45,0.90) 100%), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1800&q=80') center/cover no-repeat`,
-          padding: "5rem 0 4rem",
-        }}
-      >
+      <div ref={heroRef} className="apply-hero-bg pt-20 pb-16">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center gs-hero">
           <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">
             Application Portal
           </div>
-          <h1
-            className="font-display tracking-wider"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3.2rem)",
-              fontWeight: 700,
-              color: "#fff",
-              marginTop: "1rem",
-              marginBottom: "1.75rem",
-              lineHeight: 1.15,
-            }}
-          >
+          <h1 className="font-display tracking-wider text-[clamp(2rem,4vw,3.2rem)] font-bold text-white mt-4 mb-7 leading-[1.15]">
             Start Your <em>Turkish University</em> Application
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.7)", lineHeight: 1.7 }}>
+          <p className="text-white/70 leading-[1.7]">
             Fill out our 2-step assessment and get matched with top Turkish universities. A specialist will contact you within 24 hours.
           </p>
         </div>
@@ -110,7 +94,7 @@ export default function ApplyPage() {
                   ))}
                 </div>
                 <div className="h-1 rounded-full bg-white/10 overflow-hidden">
-                  <div className="h-full rounded-full bg-linear-to-r from-navy to-gold transition-all duration-500" style={{ width: `${progress}%` }} />
+                  <div className="h-full rounded-full bg-gradient-to-r from-navy to-gold transition-all duration-500" style={{ width: `${progress}%` }} />
                 </div>
               </div>
 

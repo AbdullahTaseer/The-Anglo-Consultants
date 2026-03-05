@@ -1,8 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import ApplyPopup from "./ApplyPopup";
+import appLogo from "@/public/app-logo.png";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -25,17 +27,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-100 h-18 bg-navy transition-all duration-300 ${scrolled ? "shadow-2xl" : ""}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-100 bg-white transition-all duration-300 ${scrolled ? "shadow-2xl" : ""}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-sm bg-gold">
-              <span className="text-sm font-black text-navy">NT</span>
-            </div>
-            <div>
-              <div className="font-bold text-white text-base leading-tight tracking-wide">Nova-Turk</div>
-              <div className="text-xs leading-tight text-gold tracking-widest">Education</div>
-            </div>
+              <Image src={appLogo} alt="Nova-Turk Education" priority height={80} />
           </Link>
 
           {/* Desktop Links */}
@@ -45,7 +41,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-semibold tracking-wide transition-colors duration-200 ${
-                  pathname === link.href ? "text-gold" : "text-white/80 hover:text-white"
+                  pathname === link.href ? "text-red" : "text-nany"
                 }`}
               >
                 {link.label}
@@ -67,9 +63,9 @@ export default function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            <span className={`block h-0.5 bg-white transition-all duration-300 ${mobileOpen ? "w-6 rotate-45 translate-y-2" : "w-6"}`} />
-            <span className={`block h-0.5 bg-white transition-all duration-300 ${mobileOpen ? "opacity-0 w-0" : "w-5"}`} />
-            <span className={`block h-0.5 bg-white transition-all duration-300 ${mobileOpen ? "w-6 -rotate-45 -translate-y-2" : "w-4"}`} />
+            <span className={`block h-0.5 bg-navy transition-all duration-300 ${mobileOpen ? "w-6 rotate-45 translate-y-2" : "w-6"}`} />
+            <span className={`block h-0.5 bg-navy transition-all duration-300 ${mobileOpen ? "opacity-0 w-0" : "w-5"}`} />
+            <span className={`block h-0.5 bg-navy transition-all duration-300 ${mobileOpen ? "w-6 -rotate-45 -translate-y-2" : "w-4"}`} />
           </button>
         </div>
 

@@ -74,32 +74,14 @@ export default function HomePage() {
       ═══════════════════════════════════════════ */}
       <section
         ref={heroRef}
-        style={{
-          minHeight: "100vh",
-          background: `linear-gradient(135deg, rgba(11,28,45,0.96) 0%, rgba(11,28,45,0.80) 60%, rgba(11,28,45,0.70) 100%), url('https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1800&q=90') center/cover no-repeat`,
-          display: "flex",
-          alignItems: "center",
-          position: "relative",
-          overflow: "hidden",
-        }}
+        className="min-h-screen hero-bg flex items-center relative overflow-hidden"
       >
         {/* Gold accent line */}
-        <div style={{
-          position: "absolute", top: 0, left: 0, right: 0, height: "3px",
-          background: "linear-gradient(to right, var(--gold), transparent)"
-        }} />
+        <div className="absolute top-0 left-0 right-0 h-0.75 bg-linear-to-r from-gold to-transparent" />
 
         {/* Decorative circles */}
-        <div style={{
-          position: "absolute", right: "-100px", top: "50%", transform: "translateY(-50%)",
-          width: "600px", height: "600px", borderRadius: "50%",
-          border: "1px solid rgba(212,175,55,0.1)", pointerEvents: "none"
-        }} />
-        <div style={{
-          position: "absolute", right: "-50px", top: "50%", transform: "translateY(-50%)",
-          width: "400px", height: "400px", borderRadius: "50%",
-          border: "1px solid rgba(212,175,55,0.15)", pointerEvents: "none"
-        }} />
+        <div className="absolute -right-25 top-1/2 -translate-y-1/2 w-150 h-150 rounded-full border border-gold/10 pointer-events-none" />
+        <div className="absolute -right-12.5 top-1/2 -translate-y-1/2 w-100 h-100 rounded-full border border-gold/15 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full py-24">
           {/* gs-hero: GSAP animates direct children with stagger */}
@@ -108,53 +90,36 @@ export default function HomePage() {
               Islamabad · Türkiye · Excellence
             </div>
 
-            <h1
-              className="font-display"
-              style={{
-                fontSize: "clamp(2.6rem, 5.5vw, 4.4rem)",
-                fontWeight: 700,
-                color: "#fff",
-                lineHeight: 1.12,
-                marginBottom: "1.5rem",
-              }}
-            >
+            <h1 className="font-display text-[clamp(2.6rem,5.5vw,4.4rem)] font-bold text-white leading-tight mb-6">
               Lighting the Path to{" "}
-              <span style={{ color: "var(--gold)", fontStyle: "italic" }}>Turkish Academia.</span>
+              <span className="text-gold">Turkish Academia.</span>
             </h1>
 
-            <p
-              style={{
-                fontSize: "clamp(1rem, 2vw, 1.2rem)",
-                color: "rgba(255,255,255,0.82)",
-                maxWidth: "600px",
-                lineHeight: 1.7,
-                marginBottom: "2.5rem",
-              }}
-            >
+            <p className="text-[clamp(1rem,2vw,1.2rem)] text-white/82 max-w-150 leading-[1.7] mb-10">
               Specialized guidance for Pakistani students aspiring to Undergraduate,
               Postgraduate, and PhD excellence in Türkiye.
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              <Link href="/apply" className="btn-red" style={{ fontSize: "1rem" }}>
+            <div className="flex max-[374px]:flex-col gap-4">
+              <Link href="/apply" className="btn-red text-base">
                 Apply Now
               </Link>
-              <Link href="/universities" className="btn-gold" style={{ fontSize: "1rem" }}>
+              <Link href="/universities" className="btn-gold text-base">
                 Explore Universities
               </Link>
             </div>
 
-            <div className="mt-14 grid grid-cols-3 gap-8 max-w-lg">
+            <div className="mt-14 flex max-sm:justify-between sm:gap-8">
               {[
                 { val: "100%", label: "Türkiye Focused" },
                 { val: "16+", label: "Partner Universities" },
                 { val: "UG·PG·PhD", label: "All Degree Levels" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <div style={{ color: "var(--gold)", fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 700 }}>
+                  <div className="text-gold text-[clamp(1.4rem,3vw,2rem)] font-bold">
                     {stat.val}
                   </div>
-                  <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.72rem", letterSpacing: "0.08em", textTransform: "uppercase", marginTop: "0.25rem" }}>
+                  <div className="text-white/60 text-[0.72rem] tracking-[0.08em] uppercase mt-1">
                     {stat.label}
                   </div>
                 </div>
@@ -164,16 +129,9 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div style={{
-          position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)",
-          display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem",
-        }}>
-          <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase" }}>Scroll</span>
-          <div style={{
-            width: "1px", height: "40px",
-            background: "linear-gradient(to bottom, rgba(212,175,55,0.7), transparent)",
-            animation: "fadeIn 1s infinite alternate"
-          }} />
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+          <span className="text-white/40 text-[0.65rem] tracking-[0.2em] uppercase">Scroll</span>
+          <div className="w-px h-10 bg-linear-to-b from-gold/70 to-transparent animate-[fadeIn_1s_infinite_alternate]" />
         </div>
       </section>
 
@@ -182,21 +140,17 @@ export default function HomePage() {
       ═══════════════════════════════════════════ */}
       <div
         ref={trustRef as React.RefObject<HTMLDivElement>}
-        style={{ background: "#fff", borderBottom: "1px solid rgba(11,28,45,0.08)", padding: "1.5rem 0" }}
+        className="bg-white border-b border-navy/8 py-6"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col items-center gap-3 text-center md:flex-row md:justify-between md:text-left">
-            <p className="gs-fade" style={{ color: "#888", fontSize: "0.78rem", letterSpacing: "0.07em", textTransform: "uppercase", fontWeight: 600 }}>
+            <p className="gs-fade text-gray-500 text-[0.78rem] tracking-[0.07em] uppercase font-semibold">
               Degrees Recognized by HEC Pakistan & Globally via Bologna Process
             </p>
             <div className="flex flex-wrap justify-center md:justify-end items-center gap-2 md:gap-4">
               {["HEC Pakistan", "YÖK Türkiye", "Bologna Process", "Ministry of Education"].map((name) => (
                 <div key={name} className="gs-fade">
-                  <div style={{
-                    background: "var(--bg)", border: "1px solid rgba(11,28,45,0.1)", borderRadius: "6px",
-                    padding: "0.4rem 1rem", fontWeight: 700, fontSize: "0.72rem",
-                    color: "var(--navy)", letterSpacing: "0.05em", whiteSpace: "nowrap",
-                  }}>
+                  <div className="bg-bg border border-navy/10 rounded-md py-1.5 px-4 font-bold text-[0.72rem] text-navy tracking-[0.05em] whitespace-nowrap">
                     {name}
                   </div>
                 </div>
@@ -211,7 +165,7 @@ export default function HomePage() {
       ═══════════════════════════════════════════ */}
       <section
         ref={roadmapRef as React.RefObject<HTMLElement>}
-        style={{ background: "var(--navy)", padding: "5rem 0" }}
+        className="bg-navy py-20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {/* Heading */}
@@ -222,7 +176,7 @@ export default function HomePage() {
             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-white leading-tight gold-underline-center mt-2">
               The Nova-Turk 6-Step Success Roadmap
             </h2>
-            <p style={{ color: "rgba(255,255,255,0.65)", maxWidth: "540px", margin: "1.2rem auto 0", lineHeight: 1.7 }}>
+            <p className="text-white/65 max-w-135 mx-auto mt-5 leading-[1.7]">
               A structured, mentor-led journey from your first consultation to your first day on a Turkish campus.
             </p>
           </div>
@@ -235,23 +189,16 @@ export default function HomePage() {
                 className="gs-stagger text-center group"
               >
                 {/* Icon Circle */}
-                <div className="relative mx-auto mb-4 flex items-center justify-center w-16 h-16 rounded-full transition-all duration-300 group-hover:scale-110"
-                  style={{ background: "rgba(255,255,255,0.06)", border: "2px solid var(--gold)" }}>
-                  <step.Icon size={26} strokeWidth={1.8} color="var(--gold)" />
-                  <div style={{
-                    position: "absolute", top: "-10px", right: "-10px",
-                    width: "24px", height: "24px", borderRadius: "50%",
-                    background: "var(--gold)", color: "var(--navy)",
-                    fontSize: "0.6rem", fontWeight: 800,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                  }}>
+                <div className="relative mx-auto mb-4 flex items-center justify-center w-16 h-16 rounded-full transition-all duration-300 group-hover:scale-110 bg-white/5 border-2 border-gold">
+                  <step.Icon size={26} strokeWidth={1.8} className="text-gold" />
+                  <div className="absolute -top-2.5 -right-2.5 w-6 h-6 rounded-full bg-gold text-navy text-[0.6rem] font-extrabold flex items-center justify-center">
                     {step.num}
                   </div>
                 </div>
-                <h3 style={{ color: "#fff", fontWeight: 700, fontSize: "0.9rem", marginBottom: "0.5rem" }}>
+                <h3 className="text-white font-bold text-[0.9rem] mb-2">
                   {step.title}
                 </h3>
-                <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.78rem", lineHeight: 1.6 }}>
+                <p className="text-white/55 text-[0.78rem] leading-[1.6]">
                   {step.desc}
                 </p>
               </div>
@@ -260,7 +207,7 @@ export default function HomePage() {
 
           {/* CTA */}
           <div className="text-center mt-12">
-            <Link href="/about" className="btn-gold" style={{ textTransform: "none" }}>
+            <Link href="/about" className="btn-gold normal-case">
               Learn About Our Process
             </Link>
           </div>
@@ -270,31 +217,30 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           SECTION 4 — WHY TÜRKIYE
       ═══════════════════════════════════════════ */}
-      <section ref={whyRef as React.RefObject<HTMLElement>} style={{ background: "var(--bg)" }} className="py-16">
+      <section ref={whyRef as React.RefObject<HTMLElement>} className="bg-bg py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 gs-stagger">
             <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Why Türkiye</div>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline-center mt-2">
               Why Pakistani Students Choose Türkiye
             </h2>
-            <p style={{ color: "#666", maxWidth: "520px", margin: "1.2rem auto 0", lineHeight: 1.7 }}>
+            <p className="text-gray-600 max-w-130 mx-auto mt-5 leading-[1.7]">
               A destination of high-value, globally respected education—suited to Pakistani students seeking quality, affordability, and cultural comfort.
             </p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid min-[500px]:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {whyCards.map((card) => (
               <div
                 key={card.title}
                 className="why-card gs-stagger"
               >
-                <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-lg"
-                  style={{ background: "rgba(11,28,45,0.06)" }}>
-                  <card.Icon size={24} strokeWidth={1.8} color="var(--navy)" />
+                <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-navy/5">
+                  <card.Icon size={24} strokeWidth={1.8} className="text-navy" />
                 </div>
-                <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--navy)", marginBottom: "0.65rem" }}>
+                <h3 className="text-[1.05rem] font-bold text-navy mb-2.5">
                   {card.title}
                 </h3>
-                <p style={{ color: "#666", fontSize: "0.88rem", lineHeight: 1.65 }}>{card.desc}</p>
+                <p className="text-gray-600 text-[0.88rem] leading-[1.65]">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -304,14 +250,14 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════
           SECTION 5 — FEATURED INSTITUTIONS
       ═══════════════════════════════════════════ */}
-      <section ref={uniRef as React.RefObject<HTMLElement>} style={{ background: "#fff" }} className="py-20">
+      <section ref={uniRef as React.RefObject<HTMLElement>} className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 gs-stagger">
             <div>
               <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-2">Partner Institutions</div>
               <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline mt-2">Featured Universities</h2>
             </div>
-            <Link href="/universities" className="btn-navy text-sm" style={{ textTransform: "none", whiteSpace: "nowrap" }}>
+            <Link href="/universities" className="btn-navy text-sm normal-case whitespace-nowrap">
               View All 16+ Universities →
             </Link>
           </div>
@@ -334,42 +280,28 @@ export default function HomePage() {
       ═══════════════════════════════════════════ */}
       <section
         ref={founderRef as React.RefObject<HTMLElement>}
-        style={{
-          background: `linear-gradient(135deg, rgba(11,28,45,0.97) 0%, rgba(11,28,45,0.92) 100%), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1800&q=80') center/cover no-repeat`,
-          padding: "5rem 0"
-        }}
+        className="founder-bg py-20"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left */}
             <div className="gs-left">
-              <div style={{ position: "relative", borderRadius: "8px", overflow: "hidden", maxWidth: "460px" }}>
+              <div className="relative rounded-lg overflow-hidden max-w-115">
                 <img
                   src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80"
                   alt="Student walking on campus"
-                  style={{ width: "100%", height: "380px", objectFit: "cover" }}
+                  className="w-full h-95 object-cover"
                 />
-                <div style={{
-                  position: "absolute", inset: 0,
-                  background: "linear-gradient(to bottom right, rgba(11,28,45,0.3), rgba(11,28,45,0.1))"
-                }} />
+                <div className="absolute inset-0 image-overlay-gradient" />
                 {/* Overlay Logo */}
-                <div style={{
-                  position: "absolute", bottom: "24px", left: "24px",
-                  background: "rgba(11,28,45,0.85)", backdropFilter: "blur(8px)",
-                  borderRadius: "6px", padding: "1rem 1.5rem",
-                  border: "1px solid rgba(212,175,55,0.3)"
-                }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                    <div style={{
-                      width: "36px", height: "36px", background: "var(--gold)",
-                      borderRadius: "4px", display: "flex", alignItems: "center", justifyContent: "center"
-                    }}>
-                      <span style={{ fontWeight: 900, color: "var(--navy)", fontSize: "0.85rem" }}>NT</span>
+                <div className="absolute bottom-6 left-6 bg-navy/85 backdrop-blur-sm rounded-md p-4 border border-gold/30">
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-9 h-9 shrink-0">
+                      <img src="/logo.png" alt="Nova-Turk Education" className="w-full h-full object-contain" />
                     </div>
                     <div>
-                      <div style={{ color: "#fff", fontWeight: 700, fontSize: "0.9rem" }}>Nova-Turk</div>
-                      <div style={{ color: "var(--gold)", fontSize: "0.65rem", letterSpacing: "0.08em" }}>Education</div>
+                      <div className="text-white font-bold text-[0.9rem]">Nova-Turk</div>
+                      <div className="text-gold text-[0.65rem] tracking-[0.08em]">Education</div>
                     </div>
                   </div>
                 </div>
@@ -382,35 +314,28 @@ export default function HomePage() {
                 A Word from our Founder
               </div>
 
-              <blockquote style={{
-                fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)",
-                color: "#fff", lineHeight: 1.7, margin: "1.5rem 0",
-                borderLeft: "3px solid var(--gold)", paddingLeft: "1.5rem"
-              }}>
+              <blockquote className="text-[clamp(1.1rem,2.5vw,1.4rem)] text-white leading-[1.7] my-6 border-l-4 border-gold pl-6">
                 "Every great journey begins with a spark of inspiration, but for a student, that spark is often a deeply personal and sacred dream…
               </blockquote>
 
-              <p style={{ color: "rgba(255,255,255,0.7)", lineHeight: 1.7, fontSize: "0.95rem", marginBottom: "1.5rem" }}>
+              <p className="text-white/70 leading-[1.7] text-[0.95rem] mb-6">
                 Every application carries a parent's trust and a student's lifelong ambition. We exist to protect that dream and guide it with care, clarity, and purpose.
               </p>
 
-              <p style={{
-                color: "var(--gold)", fontSize: "1.1rem",
-                fontStyle: "italic", marginBottom: "2rem"
-              }}>
+              <p className="text-gold text-[1.1rem] italic mb-8">
                 "We see your light, and we will ensure it shines."
               </p>
 
-              <div style={{ marginBottom: "2rem" }}>
-                <div style={{ color: "#fff", fontWeight: 700, fontSize: "0.9rem" }}>
+              <div className="mb-8">
+                <div className="text-white font-bold text-[0.9rem]">
                   Founder & CEO, Nova-Turk Education
                 </div>
-                <div style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.8rem", marginTop: "0.25rem" }}>
+                <div className="text-white/50 text-[0.8rem] mt-1">
                   Islamabad, Pakistan
                 </div>
               </div>
 
-              <Link href="/about" className="btn-gold" style={{ textTransform: "none" }}>
+              <Link href="/about" className="btn-gold normal-case">
                 Read the Full Message 
               </Link>
             </div>
@@ -424,16 +349,7 @@ export default function HomePage() {
       <div className="sticky-apply">
         <button
           onClick={() => setPopupOpen(true)}
-          className="btn-red"
-          style={{
-            writingMode: "vertical-rl",
-            textOrientation: "mixed",
-            textTransform: "none",
-            padding: "1rem 0.75rem",
-            borderRadius: "4px 0 0 4px",
-            fontSize: "0.78rem",
-            letterSpacing: "0.08em",
-          }}
+          className="bg-[#C62828] text-white cursor-pointer font-bold hover:bg-[#a81e1e] [writing-mode:vertical-rl] py-4 px-3 rounded-l rounded-r-none text-lg tracking-[0.08em] normal-case"
         >
           Apply Now 
         </button>

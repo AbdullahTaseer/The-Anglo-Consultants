@@ -48,10 +48,10 @@ function StatItem({ value, label, suffix = "" }: { value: number; label: string;
   const { count, ref } = useCountUp(value);
   return (
     <div className="flex flex-col items-center gap-1">
-      <span ref={ref} className="font-display font-bold text-white" style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", lineHeight: 1 }}>
+      <span ref={ref} className="font-display font-bold text-white text-[clamp(2rem,4vw,2.8rem)] leading-none">
         {count}{suffix}
       </span>
-      <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "rgba(212,175,55,0.85)" }}>
+      <span className="text-xs font-semibold tracking-widest uppercase text-gold/85">
         {label}
       </span>
     </div>
@@ -92,63 +92,26 @@ export default function UniversitiesPage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────── */}
-      <div
-        ref={heroRef}
-        style={{
-          background: `linear-gradient(135deg, rgba(11,28,45,0.97) 0%, rgba(11,28,45,0.82) 100%), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1800&q=80') center/cover no-repeat`,
-          padding: "5.5rem 0 4.5rem",
-        }}
-      >
+      <div ref={heroRef} className="universities-hero-bg pt-22 pb-18">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center gs-hero">
-          <div
-            className="inline-flex items-center gap-2 mb-5"
-            style={{
-              background: "rgba(212,175,55,0.12)",
-              border: "1px solid rgba(212,175,55,0.3)",
-              borderRadius: "2rem",
-              padding: "0.35rem 1rem",
-            }}
-          >
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--gold)", display: "inline-block" }} />
-            <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ color: "var(--gold)" }}>
+          <div className="inline-flex items-center gap-2 mb-5 pill-badge">
+            <span className="pill-dot" />
+            <span className="text-xs font-bold tracking-[0.18em] uppercase text-gold">
               Institution Portfolio
             </span>
           </div>
 
-          <h1
-            className="font-display tracking-wide"
-            style={{
-              fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
-              fontWeight: 700,
-              color: "#fff",
-              marginBottom: "1.1rem",
-              lineHeight: 1.12,
-            }}
-          >
+          <h1 className="font-display tracking-wide text-[clamp(2.2rem,5vw,3.8rem)] font-bold text-white mb-[1.1rem] leading-[1.12]">
             Premier Institutions <br className="hidden sm:block" />
-            of <em style={{ color: "var(--gold)", fontStyle: "italic" }}>Turkiye</em>
+            of <em className="text-gold italic">Turkiye</em>
           </h1>
 
-          <p
-            style={{
-              color: "rgba(255,255,255,0.65)",
-              fontSize: "1.05rem",
-              maxWidth: "520px",
-              margin: "0 auto 3rem",
-              lineHeight: 1.75,
-            }}
-          >
+          <p className="text-white/65 text-[1.05rem] max-w-130 mx-auto mb-12 leading-[1.75]">
             Discover world-class campuses where your future begins. Browse our curated portfolio of partner universities.
           </p>
 
           {/* Stats row */}
-          <div
-            className="inline-flex flex-wrap justify-center gap-8 sm:gap-14"
-            style={{
-              borderTop: "1px solid rgba(255,255,255,0.1)",
-              paddingTop: "2rem",
-            }}
-          >
+          <div className="inline-flex flex-wrap justify-center gap-8 sm:gap-14 border-t border-white/10 pt-8">
             <StatItem value={universities.length} label="Partner Universities" />
             <StatItem value={totalPrograms} suffix="+" label="Programs Offered" />
             <StatItem value={cities.length - 1} label="Cities Covered" />
@@ -157,17 +120,7 @@ export default function UniversitiesPage() {
       </div>
 
       {/* ── Filter Bar ───────────────────────────────────── */}
-      <div
-        className="sticky z-50"
-        style={{
-          top: 72,
-          background: "rgba(247,249,252,0.92)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: "1px solid rgba(11,28,45,0.07)",
-          boxShadow: "0 4px 24px rgba(11,28,45,0.06)",
-        }}
-      >
+      <div className="sticky z-50 top-18 filter-bar-glass">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 justify-between">
 
@@ -175,34 +128,14 @@ export default function UniversitiesPage() {
             <div className="flex flex-wrap items-center gap-3">
 
               {/* Segmented level control */}
-              <div
-                style={{
-                  display: "inline-flex",
-                  background: "rgba(11,28,45,0.06)",
-                  borderRadius: 10,
-                  padding: "3px",
-                  gap: 2,
-                }}
-              >
+              <div className="inline-flex segmented-bg">
                 {(["ALL", "UG", "PG", "PhD"] as const).map((lvl) => {
                   const active = levelFilter === lvl;
                   return (
                     <button
                       key={lvl}
                       onClick={() => setLevelFilter(lvl)}
-                      style={{
-                        padding: "0.32rem 0.85rem",
-                        borderRadius: 8,
-                        fontSize: "0.72rem",
-                        fontWeight: 700,
-                        border: "none",
-                        cursor: "pointer",
-                        letterSpacing: "0.03em",
-                        transition: "background 0.18s, color 0.18s, box-shadow 0.18s",
-                        background: active ? "#fff" : "transparent",
-                        color: active ? "var(--navy)" : "#888",
-                        boxShadow: active ? "0 1px 4px rgba(11,28,45,0.12), 0 0 0 0.5px rgba(11,28,45,0.06)" : "none",
-                      }}
+                      className={`py-[0.32rem] px-[0.85rem] rounded-lg text-[0.72rem] font-bold border-none cursor-pointer tracking-[0.03em] transition-all duration-200 ${active ? "segmented-btn-active" : "segmented-btn-inactive"}`}
                     >
                       {lvl === "ALL" ? "All" : lvl}
                     </button>
@@ -211,29 +144,17 @@ export default function UniversitiesPage() {
               </div>
 
               {/* Divider */}
-              <div style={{ width: 1, height: 22, background: "rgba(11,28,45,0.1)", flexShrink: 0 }} />
+              <div className="w-px h-5.5 bg-navy/10 shrink-0" />
 
               {/* City select — pill styled */}
-              <div style={{ position: "relative" }}>
+              <div className="relative">
                 <Select value={cityFilter} onValueChange={setCityFilter}>
                   <SelectTrigger
-                    className="text-xs font-semibold"
-                    style={{
-                      height: 34,
-                      width: 148,
-                      borderRadius: 10,
-                      border: cityFilter !== "ALL"
-                        ? "1.5px solid var(--navy)"
-                        : "1.5px solid rgba(11,28,45,0.14)",
-                      background: cityFilter !== "ALL" ? "var(--navy)" : "#fff",
-                      color: cityFilter !== "ALL" ? "#fff" : "#444",
-                      boxShadow: "none",
-                      paddingLeft: "0.75rem",
-                    }}
+                    className={`text-xs font-semibold select-trigger-neutral ${cityFilter !== "ALL" ? "select-trigger-active" : ""}`}
                   >
                     <svg
                       width="10" height="12" viewBox="0 0 10 12" fill="none"
-                      style={{ flexShrink: 0, opacity: cityFilter !== "ALL" ? 0.85 : 0.5 }}
+                      className={`shrink-0 ${cityFilter !== "ALL" ? "opacity-85" : "opacity-50"}`}
                     >
                       <path d="M5 0C2.79 0 1 1.79 1 4c0 3 4 8 4 8s4-5 4-8c0-2.21-1.79-4-4-4zm0 5.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
                         fill={cityFilter !== "ALL" ? "#fff" : "var(--navy)"} />
@@ -254,23 +175,7 @@ export default function UniversitiesPage() {
               {hasActiveFilter && (
                 <button
                   onClick={() => { setLevelFilter("ALL"); setCityFilter("ALL"); }}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 5,
-                    padding: "0.32rem 0.75rem",
-                    borderRadius: 8,
-                    fontSize: "0.7rem",
-                    fontWeight: 700,
-                    border: "1.5px solid rgba(198,40,40,0.25)",
-                    background: "rgba(198,40,40,0.05)",
-                    color: "var(--red)",
-                    cursor: "pointer",
-                    transition: "background 0.15s",
-                    letterSpacing: "0.02em",
-                  }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(198,40,40,0.1)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(198,40,40,0.05)"; }}
+                  className="inline-flex items-center gap-1.5 py-[0.32rem] px-3 rounded-lg text-[0.7rem] font-bold filter-clear-btn cursor-pointer transition-colors duration-150 tracking-[0.02em]"
                 >
                   <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
                     <path d="M1 1l6 6M7 1L1 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
@@ -281,27 +186,11 @@ export default function UniversitiesPage() {
             </div>
 
             {/* Right: result count */}
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                background: "rgba(11,28,45,0.05)",
-                borderRadius: 8,
-                padding: "0.3rem 0.75rem",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 800,
-                  color: "var(--navy)",
-                  lineHeight: 1,
-                }}
-              >
+            <div className="inline-flex items-center gap-1.5 bg-navy/5 rounded-lg py-[0.3rem] px-3">
+              <span className="text-base font-extrabold text-navy leading-none">
                 {filtered.length}
               </span>
-              <span style={{ fontSize: "0.72rem", color: "#888", fontWeight: 600 }}>
+              <span className="text-[0.72rem] text-[#888] font-semibold">
                 {filtered.length === 1 ? "university" : "universities"}
               </span>
             </div>
@@ -311,25 +200,17 @@ export default function UniversitiesPage() {
       </div>
 
       {/* ── University Grid ───────────────────────────────── */}
-      <section ref={gridRef as React.RefObject<HTMLElement>} style={{ background: "var(--bg)", padding: "3rem 0 4rem" }}>
+      <section ref={gridRef as React.RefObject<HTMLElement>} className="bg-bg py-12 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {filtered.length === 0 ? (
-            <div
-              className="text-center py-20"
-              style={{
-                background: "#fff",
-                borderRadius: 12,
-                border: "1px solid rgba(11,28,45,0.07)",
-              }}
-            >
-              <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>🔍</div>
-              <p style={{ color: "#888", fontSize: "1rem", marginBottom: "1.5rem" }}>
+            <div className="text-center py-20 bg-white rounded-xl border border-navy/[0.07]">
+              <div className="text-[2.5rem] mb-4">🔍</div>
+              <p className="text-[#888] text-base mb-6">
                 No universities match your filters.
               </p>
               <button
                 onClick={() => { setLevelFilter("ALL"); setCityFilter("ALL"); }}
-                className="btn-navy"
-                style={{ textTransform: "none", fontSize: "0.85rem" }}
+                className="btn-navy normal-case text-[0.85rem]"
               >
                 Clear Filters
               </button>
@@ -350,76 +231,28 @@ export default function UniversitiesPage() {
       </section>
 
       {/* ── Bottom CTA ───────────────────────────────────── */}
-      <section
-        ref={ctaRef as React.RefObject<HTMLElement>}
-        style={{
-          background: `linear-gradient(135deg, var(--navy) 0%, #122840 100%)`,
-          padding: "5rem 0",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
+      <section ref={ctaRef as React.RefObject<HTMLElement>} className="cta-section-bg py-20 relative overflow-hidden">
         {/* Decorative circles */}
-        <div
-          style={{
-            position: "absolute",
-            top: "-80px",
-            right: "-80px",
-            width: 280,
-            height: 280,
-            borderRadius: "50%",
-            background: "rgba(212,175,55,0.07)",
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-60px",
-            left: "-60px",
-            width: 200,
-            height: 200,
-            borderRadius: "50%",
-            background: "rgba(212,175,55,0.05)",
-            pointerEvents: "none",
-          }}
-        />
+        <div className="cta-deco-circle-top" />
+        <div className="cta-deco-circle-bottom" />
 
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center" style={{ position: "relative" }}>
-          <div
-            className="gs-stagger inline-flex items-center gap-2 mb-5"
-            style={{
-              background: "rgba(212,175,55,0.12)",
-              border: "1px solid rgba(212,175,55,0.25)",
-              borderRadius: "2rem",
-              padding: "0.35rem 1rem",
-            }}
-          >
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--gold)", display: "inline-block" }} />
-            <span className="text-xs font-bold tracking-[0.14em] uppercase" style={{ color: "var(--gold)" }}>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center relative">
+          <div className="gs-stagger inline-flex items-center gap-2 mb-5 pill-badge-alt">
+            <span className="pill-dot" />
+            <span className="text-xs font-bold tracking-[0.14em] uppercase text-gold">
               Free Guidance
             </span>
           </div>
 
-          <h2
-            className="gs-stagger font-display"
-            style={{
-              fontSize: "clamp(1.7rem, 3.5vw, 2.4rem)",
-              fontWeight: 700,
-              color: "#fff",
-              marginBottom: "1rem",
-              lineHeight: 1.2,
-            }}
-          >
+          <h2 className="gs-stagger font-display text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-white mb-4 leading-[1.2]">
             Not Sure Which University<br className="hidden sm:block" /> Is Right for You?
           </h2>
-          <p className="gs-stagger" style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.75, marginBottom: "2rem", fontSize: "0.95rem" }}>
+          <p className="gs-stagger text-white/60 leading-[1.75] mb-8 text-[0.95rem]">
             Our specialists match you with the perfect institution based on your academic profile, budget, and career goals.
           </p>
           <button
             onClick={() => setPopupOpen(true)}
-            className="gs-stagger btn-gold"
-            style={{ fontSize: "0.95rem", textTransform: "none", padding: "0.85rem 2.2rem" }}
+            className="gs-stagger btn-gold text-[0.95rem] normal-case py-[0.85rem] px-[2.2rem]"
           >
             Get a Free Consultation
           </button>

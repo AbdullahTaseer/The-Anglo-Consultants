@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito, Playfair_Display } from "next/font/google";
+import { Nunito } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -9,14 +9,6 @@ const nunito = Nunito({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-nunito",
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -47,10 +39,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${nunito.variable} ${playfair.variable}`}>
+    <html lang="en" className={nunito.variable}>
       <body>
         <Navbar />
-        <main style={{ paddingTop: "72px" }}>{children}</main>
+        <main className="pt-[72px]">{children}</main>
         <Footer />
         <WhatsAppButton />
       </body>

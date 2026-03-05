@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail, ChevronRight } from "lucide-react";
+import AppLogo from "@/public/app-logo.png";
 
 const socialLinks = [
   { label: "Instagram", path: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" },
@@ -27,7 +29,7 @@ const partnerUnis = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: "var(--navy)" }}>
+    <footer className="bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
 
         {/* ── Main grid: 1 col on mobile → 2 col on sm → 4 col on lg ── */}
@@ -35,24 +37,14 @@ export default function Footer() {
 
           {/* ── Brand ── */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-sm flex items-center justify-center shrink-0"
-                style={{ background: "var(--gold)" }}>
-                <span className="text-sm font-black" style={{ color: "var(--navy)" }}>NT</span>
-              </div>
-              <div>
-                <div className="font-bold text-white text-base leading-tight">Nova-Turk</div>
-                <div className="text-xs tracking-widest" style={{ color: "var(--gold)" }}>Education</div>
-              </div>
-            </div>
-            <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.60)" }}>
+            <Image src={AppLogo} alt="Nova-Turk Education" height={100} />
+            <p className="text-sm leading-relaxed mb-5 text-gray-600">
               Lighting the path to Turkish Academia. Pakistan&apos;s most specialized Turkey education consultancy.
             </p>
             <div className="flex gap-2.5">
               {socialLinks.map((s) => (
                 <a key={s.label} href="#" aria-label={s.label}
-                  className="w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110"
-                  style={{ background: "rgba(255,255,255,0.08)", color: "var(--gold)" }}>
+                  className="w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110 bg-navy/5 text-gold hover:bg-navy/10">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                     <path d={s.path} />
                   </svg>
@@ -63,14 +55,13 @@ export default function Footer() {
 
           {/* ── Quick Links ── */}
           <div>
-            <h4 className="font-bold text-white text-xs tracking-widest uppercase mb-4">Quick Links</h4>
+            <h4 className="font-bold text-navy text-xs tracking-widest uppercase mb-4">Quick Links</h4>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href}
-                    className="text-sm flex items-center gap-2 transition-colors duration-150 hover:text-white"
-                    style={{ color: "rgba(255,255,255,0.60)" }}>
-                    <span style={{ color: "var(--gold)" }}><ChevronRight size={16} /></span>
+                    className="text-sm flex items-center gap-2 transition-colors duration-150 hover:text-navy text-gray-600">
+                    <span className="text-gold"><ChevronRight size={16} /></span>
                     {link.label}
                   </Link>
                 </li>
@@ -80,14 +71,13 @@ export default function Footer() {
 
           {/* ── Partner Universities ── */}
           <div>
-            <h4 className="font-bold text-white text-xs tracking-widest uppercase mb-4">Partner Universities</h4>
+            <h4 className="font-bold text-navy text-xs tracking-widest uppercase mb-4">Partner Universities</h4>
             <ul className="space-y-2.5">
               {partnerUnis.map((uni) => (
                 <li key={uni}>
                   <Link href="/universities"
-                    className="text-sm flex items-center gap-2 transition-colors duration-150 hover:text-white"
-                    style={{ color: "rgba(255,255,255,0.60)" }}>
-                    <span style={{ color: "var(--gold)" }}><ChevronRight size={16} /></span>
+                    className="text-sm flex items-center gap-2 transition-colors duration-150 hover:text-navy text-gray-600">
+                    <span className="text-gold"><ChevronRight size={16} /></span>
                     {uni}
                   </Link>
                 </li>
@@ -97,23 +87,23 @@ export default function Footer() {
 
           {/* ── Contact ── */}
           <div>
-            <h4 className="font-bold text-white text-xs tracking-widest uppercase mb-4">Contact Us</h4>
+            <h4 className="font-bold text-navy text-xs tracking-widest uppercase mb-4">Contact Us</h4>
             <ul className="space-y-3.5 mb-5">
               <li className="flex items-start gap-3">
-                <MapPin size={16} className="shrink-0 mt-0.5" style={{ color: "var(--gold)" }} />
-                <span className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.60)" }}>
+                <MapPin size={16} className="shrink-0 mt-0.5 text-gold" />
+                <span className="text-sm leading-relaxed text-gray-600">
                   Head Office<br />Islamabad, Pakistan
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Phone size={16} className="shrink-0 mt-0.5" style={{ color: "var(--gold)" }} />
-                <span className="text-sm" style={{ color: "rgba(255,255,255,0.60)" }}>
+                <Phone size={16} className="shrink-0 mt-0.5 text-gold" />
+                <span className="text-sm text-gray-600">
                   +92 [Phone Number]
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Mail size={16} className="shrink-0 mt-0.5" style={{ color: "var(--gold)" }} />
-                <span className="text-sm" style={{ color: "rgba(255,255,255,0.60)" }}>
+                <Mail size={16} className="shrink-0 mt-0.5 text-gold" />
+                <span className="text-sm text-gray-600">
                   info@nova-turk.com
                 </span>
               </li>
@@ -124,16 +114,15 @@ export default function Footer() {
         </div>
 
         {/* ── Bottom Bar ── */}
-        <div className="border-t py-5"
-          style={{ borderColor: "rgba(255,255,255,0.08)" }}>
+        <div className="border-t border-gray-200 py-5">
           <div className="flex flex-col gap-1.5 text-center sm:flex-row sm:justify-between sm:text-left">
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
+            <p className="text-xs text-gray-500">
               © 2026 Nova-Turk Education. All rights reserved. · Islamabad, Pakistan
             </p>
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
+            <p className="text-xs text-gray-500">
               Degrees recognized by{" "}
-              <span style={{ color: "var(--gold)" }}>HEC Pakistan</span>{" "}&amp;{" "}
-              <span style={{ color: "var(--gold)" }}>YÖK Türkiye</span>{" "}(Bologna Process)
+              <span className="text-gold">HEC Pakistan</span>{" "}&amp;{" "}
+              <span className="text-gold">YÖK Türkiye</span>{" "}(Bologna Process)
             </p>
           </div>
         </div>

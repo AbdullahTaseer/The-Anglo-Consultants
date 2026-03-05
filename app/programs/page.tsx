@@ -20,49 +20,26 @@ import {
 import { Search } from "lucide-react";
 import { useHeroAnimation, useScrollFadeUp, useStaggerReveal } from "@/lib/gsap-animations";
 
-const LEVEL_COLORS: Record<string, { bg: string; color: string }> = {
-  UG:  { bg: "#e8f4f8", color: "#0B5394" },
-  PG:  { bg: "#fef3e2", color: "#986D00" },
-  PhD: { bg: "#f3e8f4", color: "#6B3774" },
+const LEVEL_CLASSES: Record<string, string> = {
+  UG:  "badge-ug",
+  PG:  "badge-pg",
+  PhD: "badge-phd",
 };
 
 function ProgramRow({ prog, uniName, onInquire }: { prog: Program; uniName: string; onInquire: () => void }) {
-  const lc = LEVEL_COLORS[prog.level] ?? { bg: "#eee", color: "#333" };
+  const badgeClass = LEVEL_CLASSES[prog.level] ?? "bg-gray-200 text-gray-700";
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: 12,
-        background: "#fff",
-        border: "1px solid rgba(11,28,45,0.07)",
-        borderRadius: 10,
-        padding: "0.7rem 0.9rem",
-        transition: "border-color 0.2s, box-shadow 0.2s",
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(11,28,45,0.16)";
-        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 12px rgba(11,28,45,0.07)";
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(11,28,45,0.07)";
-        (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-      }}
-    >
-      <div style={{ minWidth: 0 }}>
-        <p style={{ fontSize: "0.83rem", fontWeight: 700, color: "var(--navy)", lineHeight: 1.35, marginBottom: "0.3rem" }}>
+    <div className="flex items-center justify-between gap-3 bg-white border border-navy/10 rounded-[10px] py-2.5 px-3.5 transition-all duration-200 hover:border-navy/20 hover:shadow-[0_2px_12px_rgba(11,28,45,0.07)]">
+      <div className="min-w-0 flex-1">
+        <p className="text-[0.83rem] font-bold text-navy leading-[1.35] mb-1">
           {prog.name}
         </p>
-        <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-          <span style={{
-            fontSize: "0.6rem", fontWeight: 800, padding: "0.18rem 0.55rem",
-            borderRadius: 100, background: lc.bg, color: lc.color, letterSpacing: "0.04em",
-          }}>
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className={`text-[0.6rem] font-extrabold px-2 py-0.5 rounded-full tracking-[0.04em] ${badgeClass}`}>
             {prog.level}
           </span>
           {prog.language && (
-            <span style={{ fontSize: "0.65rem", color: "#9ca3af", display: "flex", alignItems: "center", gap: 3 }}>
+            <span className="text-[0.65rem] text-gray-400 flex items-center gap-1">
               <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
                 <circle cx="4.5" cy="4.5" r="4" stroke="currentColor" strokeWidth="1"/>
                 <path d="M1 4.5h7M4.5 1c-1 1.5-1 5 0 7M4.5 1c1 1.5 1 5 0 7" stroke="currentColor" strokeWidth="0.8"/>
@@ -76,25 +53,7 @@ function ProgramRow({ prog, uniName, onInquire }: { prog: Program; uniName: stri
       <button
         onClick={onInquire}
         title={`Inquire about ${prog.name}`}
-        style={{
-          flexShrink: 0,
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 5,
-          background: "var(--navy)",
-          color: "#fff",
-          fontSize: "0.65rem",
-          fontWeight: 700,
-          padding: "0.35rem 0.7rem",
-          borderRadius: 7,
-          border: "none",
-          cursor: "pointer",
-          letterSpacing: "0.03em",
-          transition: "background 0.18s",
-          whiteSpace: "nowrap",
-        }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "var(--navy-light)"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "var(--navy)"; }}
+        className="shrink-0 inline-flex items-center gap-1.5 bg-navy text-white text-[0.65rem] font-bold py-1.5 px-2.5 rounded-lg border-none cursor-pointer tracking-[0.03em] transition-colors duration-200 hover:bg-navy-light whitespace-nowrap"
       >
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
           <path d="M9 7.167l-1.75-.208a.833.833 0 0 0-.692.233l-1.275 1.275A7.425 7.425 0 0 1 2.533 5.717L3.812 4.44a.833.833 0 0 0 .234-.692L3.833 2a.833.833 0 0 0-.829-.75H1.667A.833.833 0 0 0 .833 2.167 8.158 8.158 0 0 0 9 9.333.833.833 0 0 0 9.833 8.5V8a.833.833 0 0 0-.833-.833z" fill="currentColor"/>
@@ -156,111 +115,44 @@ function ProgramsContent() {
   return (
     <>
       {/* ── Hero ── */}
-      <div
-        ref={heroRef}
-        style={{
-          background: `linear-gradient(135deg, rgba(11,28,45,0.97) 0%, rgba(11,28,45,0.82) 100%), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1800&q=80') center/cover no-repeat`,
-          padding: "5.5rem 0 4.5rem",
-        }}
-      >
+      <div ref={heroRef} className="programs-hero-bg pt-22 pb-18">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center gs-hero">
-          <div
-            className="inline-flex items-center gap-2 mb-5"
-            style={{
-              background: "rgba(212,175,55,0.12)",
-              border: "1px solid rgba(212,175,55,0.3)",
-              borderRadius: "2rem",
-              padding: "0.35rem 1rem",
-            }}
-          >
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--gold)", display: "inline-block" }} />
-            <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ color: "var(--gold)" }}>
+          <div className="inline-flex items-center gap-2 mb-5 bg-gold/10 border border-gold/30 rounded-full py-1.5 px-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
+            <span className="text-xs font-bold tracking-[0.18em] uppercase text-gold">
               Curriculum Hub
             </span>
           </div>
 
-          <h1
-            className="font-display tracking-wider"
-            style={{
-              fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
-              fontWeight: 700,
-              color: "#fff",
-              marginBottom: "1rem",
-              lineHeight: 1.12,
-            }}
-          >
-            Explore <em style={{ color: "var(--gold)" }}>All Programs</em>
+          <h1 className="font-display tracking-wider text-[clamp(2.2rem,5vw,3.8rem)] font-bold text-white mb-4 leading-tight">
+            Explore <em className="text-gold">All Programs</em>
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "1.05rem", maxWidth: "520px", margin: "0 auto 2.5rem", lineHeight: 1.75 }}>
+          <p className="text-white/65 text-[1.05rem] max-w-130 mx-auto mb-10 leading-[1.75]">
             Browse hundreds of undergraduate, postgraduate, and doctoral programs across premier Turkish universities.
           </p>
 
           {/* Search bar */}
-          <div
-            className="relative max-w-2xl mx-auto"
-            style={{
-              background: "#fff",
-              borderRadius: 14,
-              boxShadow: "0 8px 40px rgba(0,0,0,0.2)",
-              display: "flex",
-              alignItems: "center",
-              padding: "0.35rem 0.35rem 0.35rem 1.1rem",
-              gap: 8,
-            }}
-          >
-            <Search size={17} strokeWidth={2.2} color="rgba(11,28,45,0.35)" style={{ flexShrink: 0 }} />
+          <div className="relative max-w-2xl mx-auto bg-white rounded-[14px] shadow-[0_8px_40px_rgba(0,0,0,0.2)] flex items-center p-1.5 pl-[1.1rem] gap-2">
+            <Search size={17} strokeWidth={2.2} className="shrink-0 text-navy/35" />
             <input
               type="text"
               placeholder="Search programs, faculties, universities…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              style={{
-                flex: 1,
-                border: "none",
-                outline: "none",
-                fontSize: "0.9rem",
-                color: "var(--navy)",
-                background: "transparent",
-                padding: "0.55rem 0",
-                fontFamily: "inherit",
-              }}
+              className="flex-1 border-none outline-none text-[0.9rem] text-navy bg-transparent py-2.5 font-[inherit]"
             />
             {search && (
               <button
                 onClick={() => setSearch("")}
-                style={{
-                  flexShrink: 0,
-                  width: 26,
-                  height: 26,
-                  borderRadius: "50%",
-                  border: "none",
-                  background: "rgba(11,28,45,0.08)",
-                  color: "#666",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "0.7rem",
-                }}
+                type="button"
+                className="shrink-0 w-6.5 h-6.5 rounded-full border-none bg-navy/8 text-gray-600 cursor-pointer flex items-center justify-center text-[0.7rem]"
               >
                 ✕
               </button>
             )}
             <button
-              style={{
-                flexShrink: 0,
-                background: "var(--navy)",
-                color: "#fff",
-                border: "none",
-                borderRadius: 10,
-                padding: "0.55rem 1.1rem",
-                fontSize: "0.8rem",
-                fontWeight: 700,
-                cursor: "pointer",
-                transition: "background 0.18s",
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "var(--navy-light)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "var(--navy)"; }}
+              type="button"
+              className="shrink-0 bg-navy text-white border-none rounded-[10px] py-2.5 px-4 text-[0.8rem] font-bold cursor-pointer transition-colors duration-200 hover:bg-navy-light"
             >
               Search
             </button>
@@ -269,52 +161,22 @@ function ProgramsContent() {
       </div>
 
       {/* ── Filter Bar ── */}
-      <div
-        className="sticky z-50"
-        style={{
-          top: 72,
-          background: "rgba(247,249,252,0.92)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: "1px solid rgba(11,28,45,0.07)",
-          boxShadow: "0 4px 24px rgba(11,28,45,0.06)",
-        }}
-      >
+      <div className="sticky z-50 top-18 bg-[rgba(247,249,252,0.92)] backdrop-blur-xl border-b border-navy/10 shadow-[0_4px_24px_rgba(11,28,45,0.06)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 justify-between">
 
             <div className="flex flex-wrap items-center gap-3">
               {/* Segmented level control */}
-              <div
-                style={{
-                  display: "inline-flex",
-                  background: "rgba(11,28,45,0.06)",
-                  borderRadius: 10,
-                  padding: "3px",
-                  gap: 2,
-                }}
-              >
+              <div className="inline-flex bg-navy/5 rounded-[10px] p-0.75 gap-0.5">
                 {(["ALL", "UG", "PG", "PhD"] as const).map((lvl) => {
                   const active = levelFilter === lvl;
                   return (
                     <button
                       key={lvl}
                       onClick={() => setLevelFilter(lvl)}
-                      style={{
-                        padding: "0.32rem 0.85rem",
-                        borderRadius: 8,
-                        fontSize: "0.72rem",
-                        fontWeight: 700,
-                        border: "none",
-                        cursor: "pointer",
-                        letterSpacing: "0.03em",
-                        transition: "background 0.18s, color 0.18s, box-shadow 0.18s",
-                        background: active ? "#fff" : "transparent",
-                        color: active ? "var(--navy)" : "#888",
-                        boxShadow: active
-                          ? "0 1px 4px rgba(11,28,45,0.12), 0 0 0 0.5px rgba(11,28,45,0.06)"
-                          : "none",
-                      }}
+                      className={`py-1.5 px-3.5 rounded-lg text-[0.72rem] font-bold border-none cursor-pointer tracking-[0.03em] transition-all duration-200 ${
+                        active ? "bg-white text-navy shadow-[0_1px_4px_rgba(11,28,45,0.12),0_0_0_0.5px_rgba(11,28,45,0.06)]" : "bg-transparent text-gray-500"
+                      }`}
                     >
                       {lvl === "ALL" ? "All" : lvl}
                     </button>
@@ -323,28 +185,20 @@ function ProgramsContent() {
               </div>
 
               {/* Divider */}
-              <div style={{ width: 1, height: 22, background: "rgba(11,28,45,0.1)", flexShrink: 0 }} />
+              <div className="w-px h-5.5 bg-navy/10 shrink-0" />
 
               {/* University select */}
               <Select value={selectedUniFilter} onValueChange={setSelectedUniFilter}>
                 <SelectTrigger
-                  className="text-xs font-semibold"
-                  style={{
-                    height: 34,
-                    width: 200,
-                    borderRadius: 10,
-                    border: selectedUniFilter !== "ALL"
-                      ? "1.5px solid var(--navy)"
-                      : "1.5px solid rgba(11,28,45,0.14)",
-                    background: selectedUniFilter !== "ALL" ? "var(--navy)" : "#fff",
-                    color: selectedUniFilter !== "ALL" ? "#fff" : "#444",
-                    boxShadow: "none",
-                    paddingLeft: "0.75rem",
-                  }}
+                  className={`text-xs font-semibold h-8.5 w-50 rounded-[10px] shadow-none pl-3 ${
+                    selectedUniFilter !== "ALL"
+                      ? "border-[1.5px] border-navy bg-navy text-white"
+                      : "border-[1.5px] border-navy/15 bg-white text-gray-700"
+                  }`}
                 >
                   <svg
                     width="10" height="12" viewBox="0 0 10 12" fill="none"
-                    style={{ flexShrink: 0, opacity: selectedUniFilter !== "ALL" ? 0.85 : 0.45 }}
+                    className={`shrink-0 ${selectedUniFilter !== "ALL" ? "opacity-85" : "opacity-45"}`}
                   >
                     <rect x="1" y="1" width="8" height="10" rx="1" stroke={selectedUniFilter !== "ALL" ? "#fff" : "var(--navy)"} strokeWidth="1.2"/>
                     <path d="M3 4h4M3 6.5h4M3 9h2.5" stroke={selectedUniFilter !== "ALL" ? "#fff" : "var(--navy)"} strokeWidth="1" strokeLinecap="round"/>
@@ -365,22 +219,7 @@ function ProgramsContent() {
               {hasActiveFilter && (
                 <button
                   onClick={() => { setSearch(""); setLevelFilter("ALL"); setSelectedUniFilter("ALL"); }}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 5,
-                    padding: "0.32rem 0.75rem",
-                    borderRadius: 8,
-                    fontSize: "0.7rem",
-                    fontWeight: 700,
-                    border: "1.5px solid rgba(198,40,40,0.25)",
-                    background: "rgba(198,40,40,0.05)",
-                    color: "var(--red)",
-                    cursor: "pointer",
-                    transition: "background 0.15s",
-                  }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(198,40,40,0.1)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(198,40,40,0.05)"; }}
+                  className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-lg text-[0.7rem] font-bold border-[1.5px] border-red/25 bg-red/5 text-red cursor-pointer transition-colors duration-150 hover:bg-red/10"
                 >
                   <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
                     <path d="M1 1l6 6M7 1L1 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
@@ -391,20 +230,11 @@ function ProgramsContent() {
             </div>
 
             {/* Result count chip */}
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                background: "rgba(11,28,45,0.05)",
-                borderRadius: 8,
-                padding: "0.3rem 0.75rem",
-              }}
-            >
-              <span style={{ fontSize: "1rem", fontWeight: 800, color: "var(--navy)", lineHeight: 1 }}>
+            <div className="inline-flex items-center gap-1.5 bg-navy/5 rounded-lg py-1.5 px-3">
+              <span className="text-base font-extrabold text-navy leading-none">
                 {totalPrograms}
               </span>
-              <span style={{ fontSize: "0.72rem", color: "#888", fontWeight: 600 }}>
+              <span className="text-[0.72rem] text-gray-500 font-semibold">
                 {totalPrograms === 1 ? "program" : "programs"}
               </span>
             </div>
@@ -413,24 +243,20 @@ function ProgramsContent() {
       </div>
 
       {/* ── Programs List ── */}
-      <section ref={listRef as React.RefObject<HTMLElement>} style={{ background: "var(--bg)", padding: "3rem 0 4rem" }}>
+      <section ref={listRef as React.RefObject<HTMLElement>} className="bg-bg py-12 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {displayData.length === 0 ? (
-            <div
-              className="text-center py-20"
-              style={{ background: "#fff", borderRadius: 16, border: "1px solid rgba(11,28,45,0.07)" }}
-            >
-              <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>🔍</div>
-              <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--navy)", marginBottom: "0.5rem" }}>
+            <div className="text-center py-20 bg-white rounded-2xl border border-navy/10">
+              <div className="text-4xl mb-4">🔍</div>
+              <h3 className="text-[1.1rem] font-bold text-navy mb-2">
                 No programs found
               </h3>
-              <p style={{ color: "#9ca3af", marginBottom: "1.5rem", fontSize: "0.9rem" }}>
+              <p className="text-gray-400 mb-6 text-[0.9rem]">
                 Try a different search term or adjust your filters.
               </p>
               <button
                 onClick={() => { setSearch(""); setLevelFilter("ALL"); setSelectedUniFilter("ALL"); }}
-                className="btn-navy"
-                style={{ textTransform: "none", fontSize: "0.85rem" }}
+                className="btn-navy normal-case text-[0.85rem]"
               >
                 Clear All Filters
               </button>
@@ -440,81 +266,37 @@ function ProgramsContent() {
               {displayData.map((uni) => (
                 <div
                   key={uni.id}
-                  className="gs-fade"
-                  style={{
-                    background: "#fff",
-                    borderRadius: 16,
-                    overflow: "hidden",
-                    boxShadow: "0 1px 4px rgba(11,28,45,0.05), 0 4px 20px rgba(11,28,45,0.05)",
-                    border: "1px solid rgba(11,28,45,0.06)",
-                  }}
+                  className="gs-fade bg-white rounded-2xl overflow-hidden shadow-[0_1px_4px_rgba(11,28,45,0.05),0_4px_20px_rgba(11,28,45,0.05)] border border-navy/10"
                 >
                   {/* University header */}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 14,
-                      padding: "1.1rem 1.4rem",
-                      borderBottom: "1px solid rgba(11,28,45,0.07)",
-                      background: "rgba(11,28,45,0.02)",
-                    }}
-                  >
+                  <div className="flex items-center gap-3.5 py-4 px-5 border-b border-navy/10 bg-navy/5">
                     {/* Thumbnail */}
-                    <div
-                      style={{
-                        width: 48,
-                        height: 48,
-                        borderRadius: 10,
-                        overflow: "hidden",
-                        border: "2px solid var(--gold)",
-                        flexShrink: 0,
-                      }}
-                    >
+                    <div className="w-12 h-12 rounded-[10px] overflow-hidden border-2 border-gold shrink-0">
                       <img src={uni.image} alt={uni.name} className="w-full h-full object-cover" />
                     </div>
 
-                    <div style={{ minWidth: 0, flex: 1 }}>
-                      <h2
-                        style={{
-                          fontSize: "1rem",
-                          fontWeight: 800,
-                          color: "var(--navy)",
-                          lineHeight: 1.3,
-                          marginBottom: "0.15rem",
-                        }}
-                      >
+                    <div className="min-w-0 flex-1">
+                      <h2 className="text-base font-extrabold text-navy leading-tight mb-0.5">
                         {uni.name}
                       </h2>
-                      <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none">
-                          <path d="M4.5 0C2.01 0 0 2.01 0 4.5c0 3.375 4.5 6.5 4.5 6.5S9 7.875 9 4.5C9 2.01 6.99 0 4.5 0zm0 6.125A1.625 1.625 0 1 1 4.5 2.875a1.625 1.625 0 0 1 0 3.25z" fill="#9ca3af"/>
+                      <div className="flex items-center gap-1.5">
+                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" className="text-gray-400">
+                          <path d="M4.5 0C2.01 0 0 2.01 0 4.5c0 3.375 4.5 6.5 4.5 6.5S9 7.875 9 4.5C9 2.01 6.99 0 4.5 0zm0 6.125A1.625 1.625 0 1 1 4.5 2.875a1.625 1.625 0 0 1 0 3.25z" fill="currentColor"/>
                         </svg>
-                        <span style={{ fontSize: "0.72rem", color: "#9ca3af" }}>{uni.city}, Türkiye</span>
+                        <span className="text-[0.72rem] text-gray-400">{uni.city}, Türkiye</span>
                       </div>
                     </div>
 
-                    <div
-                      style={{
-                        flexShrink: 0,
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 5,
-                        background: "rgba(212,175,55,0.1)",
-                        border: "1px solid rgba(212,175,55,0.3)",
-                        borderRadius: 8,
-                        padding: "0.3rem 0.75rem",
-                      }}
-                    >
-                      <span style={{ fontSize: "0.88rem", fontWeight: 800, color: "var(--navy)", lineHeight: 1 }}>
+                    <div className="shrink-0 inline-flex items-center gap-1.5 bg-gold/10 border border-gold/30 rounded-lg py-1.5 px-3">
+                      <span className="text-[0.88rem] font-extrabold text-navy leading-none">
                         {uni.faculties.reduce((s, f) => s + f.programs.length, 0)}
                       </span>
-                      <span style={{ fontSize: "0.65rem", color: "#888", fontWeight: 600 }}>programs</span>
+                      <span className="text-[0.65rem] text-gray-500 font-semibold">programs</span>
                     </div>
                   </div>
 
                   {/* Faculty accordions */}
-                  <div style={{ padding: "1rem 1.4rem 1.4rem" }}>
+                  <div className="p-4 px-5 pb-5">
                     <Accordion
                       type="single"
                       collapsible
@@ -527,33 +309,11 @@ function ProgramsContent() {
                           <AccordionItem key={key} value={key}>
                             <AccordionTrigger>
                               <div className="flex items-center gap-2.5">
-                                <span
-                                  style={{
-                                    width: 32,
-                                    height: 32,
-                                    borderRadius: 8,
-                                    background: "rgba(255,255,255,0.1)",
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    fontSize: "1rem",
-                                    flexShrink: 0,
-                                  }}
-                                >
+                                <span className="w-8 h-8 rounded-lg bg-white/10 inline-flex items-center justify-center text-base shrink-0">
                                   {faculty.icon}
                                 </span>
                                 <span className="font-semibold text-sm">{faculty.name}</span>
-                                <span
-                                  style={{
-                                    fontSize: "0.62rem",
-                                    fontWeight: 800,
-                                    padding: "0.15rem 0.5rem",
-                                    borderRadius: 100,
-                                    background: "rgba(212,175,55,0.25)",
-                                    color: "var(--gold)",
-                                    letterSpacing: "0.04em",
-                                  }}
-                                >
+                                <span className="text-[0.62rem] font-extrabold py-0.5 px-2 rounded-full bg-gold/25 text-gold tracking-[0.04em]">
                                   {faculty.programs.length}
                                 </span>
                               </div>
@@ -585,50 +345,27 @@ function ProgramsContent() {
       {/* ── Bottom CTA ── */}
       <section
         ref={ctaRef as React.RefObject<HTMLElement>}
-        style={{
-          background: `linear-gradient(135deg, var(--navy) 0%, #122840 100%)`,
-          padding: "5rem 0",
-          position: "relative",
-          overflow: "hidden",
-        }}
+        className="cta-section-bg py-20 relative overflow-hidden"
       >
-        <div style={{ position: "absolute", top: "-80px", right: "-80px", width: 280, height: 280, borderRadius: "50%", background: "rgba(212,175,55,0.07)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: "-60px", left: "-60px", width: 200, height: 200, borderRadius: "50%", background: "rgba(212,175,55,0.05)", pointerEvents: "none" }} />
+        <div className="absolute -top-20 -right-20 w-70 h-70 rounded-full bg-gold/7 pointer-events-none" />
+        <div className="absolute -bottom-15 -left-15 w-50 h-50 rounded-full bg-gold/5 pointer-events-none" />
 
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center gs-stagger" style={{ position: "relative" }}>
-          <div
-            className="inline-flex items-center gap-2 mb-5"
-            style={{
-              background: "rgba(212,175,55,0.12)",
-              border: "1px solid rgba(212,175,55,0.25)",
-              borderRadius: "2rem",
-              padding: "0.35rem 1rem",
-            }}
-          >
-            <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--gold)", display: "inline-block" }} />
-            <span className="text-xs font-bold tracking-[0.14em] uppercase" style={{ color: "var(--gold)" }}>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center gs-stagger relative">
+          <div className="inline-flex items-center gap-2 mb-5 bg-gold/10 border border-gold/25 rounded-full py-1.5 px-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
+            <span className="text-xs font-bold tracking-[0.14em] uppercase text-gold">
               Free Guidance
             </span>
           </div>
-          <h2
-            className="font-display"
-            style={{
-              fontSize: "clamp(1.7rem, 3.5vw, 2.4rem)",
-              fontWeight: 700,
-              color: "#fff",
-              marginBottom: "1rem",
-              lineHeight: 1.2,
-            }}
-          >
+          <h2 className="font-display text-[clamp(1.7rem,3.5vw,2.4rem)] font-bold text-white mb-4 leading-tight">
             Found Your Program?
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.75, marginBottom: "2rem", fontSize: "0.95rem" }}>
+          <p className="text-white/60 leading-[1.75] mb-8 text-[0.95rem]">
             Click Inquire next to any program, or start a free consultation with our admission specialists.
           </p>
           <button
             onClick={() => { setPopupProgram(""); setPopupOpen(true); }}
-            className="btn-gold"
-            style={{ fontSize: "0.95rem", textTransform: "none", padding: "0.85rem 2.2rem" }}
+            className="btn-gold text-[0.95rem] normal-case py-3.5 px-9"
           >
             Start Free Consultation →
           </button>
@@ -644,7 +381,7 @@ export default function ProgramsPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-[60vh] flex items-center justify-center" style={{ color: "#9ca3af" }}>
+        <div className="min-h-[60vh] flex items-center justify-center text-gray-400">
           Loading programs…
         </div>
       }
