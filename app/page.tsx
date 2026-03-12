@@ -36,23 +36,28 @@ const steps = [
 const whyCards = [
   {
     Icon: Globe,
-    title: "Global Standing",
-    desc: "Turkish degrees are aligned with the European Bologna Process—recognized by universities and employers worldwide.",
+    title: "Internationally Recognized",
+    desc: "Degrees aligned with the European Bologna Process—recognized by HEC Pakistan, YÖK Türkiye, and employers worldwide.",
   },
   {
     Icon: Landmark,
-    title: "Cultural Harmony",
-    desc: "A home away from home. Familiar values, warm hospitality, and modern academic standards.",
+    title: "Culturally Welcoming",
+    desc: "A home away from home. Familiar values, warm hospitality, and a welcoming environment for Pakistani students.",
   },
   {
     Icon: Wallet,
-    title: "Financial Logic",
-    desc: "World-class education at a fraction of UK, USA, or Australian costs. Quality without compromise.",
+    title: "Affordable Tuition",
+    desc: "Quality education at a fraction of UK, USA, or Australian costs. Affordable fees compared to many Western destinations.",
+  },
+  {
+    Icon: GraduationCap,
+    title: "Modern Universities",
+    desc: "Contemporary universities offering diverse academic programs across all disciplines and degree levels.",
   },
   {
     Icon: MapPinned,
     title: "Strategic Location",
-    desc: "Istanbul—the gateway between East and West. A vibrant student city with a rich cultural heritage.",
+    desc: "Gateway connecting Europe and Asia. Istanbul—a vibrant student city with rich cultural heritage.",
   },
 ];
 
@@ -74,7 +79,7 @@ export default function HomePage() {
       ═══════════════════════════════════════════ */}
       <section
         ref={heroRef}
-        className="min-h-screen hero-bg flex items-center relative overflow-hidden"
+        className="sm:min-h-screen h-auto hero-bg flex items-center relative overflow-hidden"
       >
         {/* Gold accent line */}
         <div className="absolute top-0 left-0 right-0 h-0.75 bg-linear-to-r from-gold to-transparent" />
@@ -228,7 +233,7 @@ export default function HomePage() {
               A destination of high-value, globally respected education—suited to Pakistani students seeking quality, affordability, and cultural comfort.
             </p>
           </div>
-          <div className="grid min-[500px]:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid min-[500px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
             {whyCards.map((card) => (
               <div
                 key={card.title}

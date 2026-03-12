@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import ApplyPopup from "@/components/ApplyPopup";
-import { Landmark, Handshake, GraduationCap, ClipboardList, Scale, Target, Heart } from "lucide-react";
+import { Landmark, Handshake, GraduationCap, ClipboardList, Scale, Target, Heart, Users2, Building2, Megaphone, FileCheck } from "lucide-react";
 import { useHeroAnimation, useScrollFadeUp, useStaggerReveal, useSplitReveal } from "@/lib/gsap-animations";
 
 const values = [
@@ -76,13 +76,13 @@ export default function AboutPage() {
                 Nova-Turk Education
               </h2>
               <p className="text-[#555] leading-[1.85] text-base mb-5">
-                Nova-Turk Education is a specialized education consultancy headquartered in Islamabad, Pakistan, dedicated exclusively to the Turkish academic landscape. We serve as a focused bridge between the aspirations of Pakistani students and the world-class opportunities offered by universities in Türkiye.
+                Nova-Turk Education is a specialized education consultancy headquartered in Islamabad, Pakistan, dedicated exclusively to facilitating student admissions to universities in Türkiye. We serve as a bridge between Pakistani students seeking quality international education and Turkish universities offering globally recognized academic programs.
               </p>
               <p className="text-[#555] leading-[1.85] text-base mb-5">
-                We guide applicants to Undergraduate (UG), Postgraduate (PG), and Doctoral (PhD) programs with expert, honest, and end-to-end support—from the first consultation to the first day on campus.
+                We provide structured guidance to prospective students applying to Undergraduate, Master&apos;s, and Doctoral programs. Our team supports applicants throughout the entire process—including program selection, application preparation, documentation support, and pre-departure guidance.
               </p>
               <p className="text-[#555] leading-[1.85] text-base">
-                By specializing 100% in Türkiye, Nova-Turk has developed deep insight into university expectations, documentation standards, and consular requirements—transforming complex processes into clear pathways.
+                By focusing entirely on Türkiye, Nova-Turk Education has developed detailed knowledge of admission procedures, academic expectations, and student requirements within Turkish universities.
               </p>
             </div>
             <div className="gs-right relative">
@@ -255,15 +255,123 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Services Provided to Students */}
+      <section className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 gs-stagger">
+            <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">What We Offer</div>
+            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline-center mt-2">
+              Services Provided to Students
+            </h2>
+            <p className="text-[#555] max-w-135 mx-auto mt-5 leading-[1.7]">
+              End-to-end support from your first consultation until you arrive on campus in Türkiye.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { Icon: Users2, title: "Student Counseling & Profile Evaluation", desc: "Academic profile assessment and personalized guidance to understand your best-fit programs." },
+              { Icon: GraduationCap, title: "University & Program Selection", desc: "Curated shortlist of Turkish universities aligned with your budget, GPA, and career goals." },
+              { Icon: FileCheck, title: "Application Preparation & Submission", desc: "Complete application assembly and submission to meet university requirements and deadlines." },
+              { Icon: ClipboardList, title: "Documentation & Visa Filing", desc: "Document preparation, notarization, translation, and zero-error visa submission." },
+              { Icon: Handshake, title: "Admission Coordination", desc: "Direct coordination with universities to secure acceptances and scholarship opportunities." },
+              { Icon: Landmark, title: "Pre-Departure Briefing & Travel Guidance", desc: "Post-visa support: accommodation, flights, Ikamet, and arrival preparation." },
+            ].map((s) => (
+              <div key={s.title} className="flex gap-4 items-start p-6 rounded-lg bg-bg border border-navy/8 hover:border-gold/30 transition-colors">
+                <div className="w-12 h-12 rounded-lg bg-navy flex items-center justify-center shrink-0">
+                  <s.Icon size={22} strokeWidth={1.8} color="var(--gold)" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-navy mb-1.5">{s.title}</h3>
+                  <p className="text-[#666] text-[0.88rem] leading-[1.6]">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experienced Counseling Team */}
+      <section className="bg-bg py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center gs-fade">
+          <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Our Team</div>
+          <h2 className="text-[clamp(1.6rem,3vw,2.2rem)] font-bold text-navy mt-4 mb-6 leading-[1.4]">
+            Experienced Counseling Team
+          </h2>
+          <p className="text-[#555] text-[1.05rem] leading-[1.8]">
+            Nova-Turk Education is supported by a team of experienced student counselors who guide applicants in selecting appropriate academic programs and preparing complete university applications. Our counselors assist students at every stage of the admission process, ensuring that applications meet university requirements and deadlines.
+          </p>
+        </div>
+      </section>
+
+      {/* Why Partner With Nova-Turk (For Universities) */}
+      <section className="bg-navy py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 gs-stagger">
+            <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">For Universities</div>
+            <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-white leading-tight gold-underline-center mt-2">
+              Why Partner With Nova-Turk Education
+            </h2>
+            <p className="text-white/75 max-w-135 mx-auto mt-5 leading-[1.7]">
+              Nova-Turk Education aims to build long-term institutional relationships with Turkish universities by supporting the recruitment of qualified Pakistani students.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {[
+              { Icon: Target, text: "Focused recruitment exclusively for Turkish universities" },
+              { Icon: Users2, text: "Dedicated counseling support for applicants" },
+              { Icon: FileCheck, text: "Structured application process ensuring complete submissions" },
+              { Icon: Megaphone, text: "Continuous communication with students until university registration" },
+              { Icon: Building2, text: "Promotion of partner universities through seminars and outreach" },
+            ].map((item) => (
+              <div key={item.text} className="flex gap-3 items-start p-5 rounded-lg bg-white/5 border border-gold/20">
+                <item.Icon size={22} className="shrink-0 text-gold mt-0.5" />
+                <p className="text-white/85 text-sm leading-[1.6]">{item.text}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center p-6 rounded-lg bg-white/5 border border-gold/20 max-w-3xl mx-auto gs-fade">
+            <h3 className="text-gold font-bold text-lg mb-3">Partnership Objective</h3>
+            <p className="text-white/85 leading-[1.75]">
+              Nova-Turk Education seeks to collaborate with Turkish universities to promote their academic programs among Pakistani students and support the enrollment of qualified applicants into undergraduate and postgraduate programs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Student Recruitment Channels */}
+      <section className="bg-bg py-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 gs-stagger">
+            <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">How We Reach Students</div>
+            <h2 className="text-[clamp(1.6rem,3vw,2.2rem)] font-bold text-navy mt-4 mb-6 leading-[1.4]">
+              Student Recruitment Channels in Pakistan
+            </h2>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                "Counseling sessions in schools and colleges",
+                "Educational seminars and information sessions",
+                "Digital outreach and social media promotion",
+                "Personalized one-to-one student advising",
+                "Collaboration with student communities and academic networks",
+              ].map((ch) => (
+                <span key={ch} className="inline-block bg-white border border-navy/10 rounded-full px-5 py-2.5 text-sm font-medium text-navy shadow-sm">
+                  {ch}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Mission Section */}
       <section ref={missionRef as React.RefObject<HTMLElement>} className="bg-navy py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center gs-stagger">
           <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Our Mission</div>
           <h2 className="text-[clamp(1.6rem,3.5vw,2.4rem)] font-bold text-white mt-4 mb-6 leading-[1.4]">
-            Expert, Empathetic, and Uncompromisingly Honest Guidance
+            Supporting Students, Assisting Universities
           </h2>
           <p className="text-white/75 text-[1.05rem] leading-[1.8] mb-10">
-            To provide expert, empathetic, and uncompromisingly honest guidance for students aspiring to study in Türkiye—ensuring the right academic match, a flawless application process, and confident transition to life and study in Turkey.
+            Our mission is to support Pakistani students in accessing quality higher education opportunities in Türkiye while assisting universities in recruiting motivated and academically prepared international students.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button onClick={() => setPopupOpen(true)} className="btn-red normal-case text-base">
