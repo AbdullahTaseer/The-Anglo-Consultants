@@ -29,7 +29,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A leading private university in Istanbul offering a wide range of English-medium programs across engineering, medicine, business, and arts.",
     topFaculties: ["Medicine", "Engineering", "Business", "Law"],
-    image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80",
+    image: "/universities/altinbas.jpg",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -126,7 +126,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A distinguished Istanbul university known for medicine, engineering, and health sciences programs with both Turkish and English instruction.",
     topFaculties: ["Medicine", "Engineering", "Health Sciences", "Business"],
-    image: "https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=800&q=80",
+    image: "/universities/halic.jpg",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -176,7 +176,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A modern university on Istanbul's European side, renowned for English-medium engineering, business, and social science programs.",
     topFaculties: ["Engineering", "Business", "Arts & Design", "Social Sciences"],
-    image: "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
+    image: "/universities/isik.webp",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -243,7 +243,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "One of Turkey's most prestigious medical universities, offering world-class healthcare education alongside strong engineering and social science programs.",
     topFaculties: ["Medicine", "Dentistry", "Engineering", "Health Sciences"],
-    image: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=800&q=80",
+    image: "/universities/medipol.webp",
     faculties: [
       {
         name: "Medicine & Allied Health",
@@ -318,7 +318,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A rapidly growing university offering diverse programs in engineering, health sciences, business, and arts with flexible language options.",
     topFaculties: ["Engineering", "Dentistry", "Business", "Aeronautical Engineering"],
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80",
+    image: "/universities/gelisim.png",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -380,7 +380,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A specialized university famous for neuroscience, psychology, and health sciences programs, located on Istanbul's Asian side.",
     topFaculties: ["Medicine", "Psychology", "Neuroscience", "Engineering"],
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80",
+    image: "/universities/uskudar.jpg",
     faculties: [
       {
         name: "Health & Medical Sciences",
@@ -436,7 +436,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A dynamic Istanbul university offering strong programs in engineering, health sciences, business, and creative arts.",
     topFaculties: ["Engineering", "Health Sciences", "Business", "Architecture"],
-    image: "https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?w=800&q=80",
+    image: "/universities/arel.jpg",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -489,7 +489,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A technology-focused university in Ankara's industrial hub, offering cutting-edge engineering and applied science programs.",
     topFaculties: ["Engineering", "Applied Sciences", "Business", "AI & Robotics"],
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
+    image: "/universities/ostim.webp",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -533,7 +533,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A prestigious university with strong international ties, offering English-medium programs in engineering, health, business, and design.",
     topFaculties: ["Engineering", "Business", "Architecture", "Health Sciences"],
-    image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=80",
+    image: "/universities/bahcesehir.jpg",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -601,7 +601,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A modern university offering quality education with a focus on health sciences, engineering, and business administration.",
     topFaculties: ["Health Sciences", "Engineering", "Business", "Architecture"],
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    image: "/universities/atlas.jpg",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -654,7 +654,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A leading private university with state-of-the-art facilities, excelling in medicine, engineering, and business programs.",
     topFaculties: ["Medicine", "Engineering", "Business", "Biomedical Engineering"],
-    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80",
+    image: "/universities/istinye.jpg",
     faculties: [
       {
         name: "Health & Medical Sciences",
@@ -710,7 +710,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A growing university on Istanbul's Asian side offering diverse programs in engineering, health sciences, business, and design.",
     topFaculties: ["Engineering", "Health Sciences", "Business", "Design"],
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80",
+    image: "/universities/beykoz.jpg",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -763,7 +763,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A prestigious Istanbul university with QS rankings recognition, offering English-medium programs in engineering, business, arts, and social sciences.",
     topFaculties: ["Engineering", "Business", "Film & Television", "Architecture"],
-    image: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&q=80",
+    image: "/universities/kadir-has.jpg",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -819,7 +819,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A well-established Istanbul university offering strong vocational and academic programs in engineering, health, and business.",
     topFaculties: ["Engineering", "Health Sciences", "Business", "Architecture"],
-    image: "https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=800&q=80",
+    image: "/universities/gedik.png",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -873,7 +873,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A vibrant Istanbul university with a dynamic campus culture offering strong programs in engineering, health, business, and sports sciences.",
     topFaculties: ["Engineering", "Health Sciences", "Business", "Sports Sciences"],
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80",
+    image: "/universities/fenerbahce.webp",
     faculties: [
       {
         name: "Engineering & Technology",
@@ -926,7 +926,7 @@ export const universities: University[] = [
     country: "Türkiye",
     description: "A comprehensive Istanbul university offering programs in medicine, engineering, business, and arts with a strong focus on practical education.",
     topFaculties: ["Medicine", "Engineering", "Business", "Architecture"],
-    image: "https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?w=800&q=80",
+    image: "/universities/okan.jpg",
     faculties: [
       {
         name: "Medicine & Health",

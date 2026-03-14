@@ -25,12 +25,12 @@ import {
 } from "@/lib/gsap-animations";
 
 const steps = [
-  { num: "01", Icon: Search,       title: "Discovery",       desc: "Profile assessment to understand your dream and academic direction." },
-  { num: "02", Icon: GraduationCap,title: "Selection",       desc: "Curated shortlist of top Turkish universities aligned with your budget and GPA." },
-  { num: "03", Icon: Star,         title: "The Golden File", desc: "Document preparation, notarization, and professional Turkish translation." },
-  { num: "04", Icon: BadgeCheck,   title: "Acceptance",      desc: "Securing official acceptance letters and scholarship opportunities." },
-  { num: "05", Icon: Plane,        title: "Visa Filing",     desc: "Zero-error documentation aligned with consulate requirements." },
-  { num: "06", Icon: Sparkles,     title: "Anatolian Arrival",desc: "Post-visa briefing on accommodation, flight booking, and Ikamet steps." },
+  { num: "01", Icon: Search, title: "Discovery", desc: "Profile assessment to understand your dream and academic direction." },
+  { num: "02", Icon: GraduationCap, title: "Selection", desc: "Curated shortlist of top Turkish universities aligned with your budget and GPA." },
+  { num: "03", Icon: Star, title: "The Golden File", desc: "Document preparation, notarization, and professional Turkish translation." },
+  { num: "04", Icon: BadgeCheck, title: "Acceptance", desc: "Securing official acceptance letters and scholarship opportunities." },
+  { num: "05", Icon: Plane, title: "Visa Filing", desc: "Zero-error documentation aligned with consulate requirements." },
+  { num: "06", Icon: Sparkles, title: "Anatolian Arrival", desc: "Post-visa briefing on accommodation, flight booking, and Ikamet steps." },
 ];
 
 const whyCards = [
@@ -65,11 +65,11 @@ const featuredUnis = universities.slice(0, 3);
 
 export default function HomePage() {
   const [popupOpen, setPopupOpen] = useState(false);
-  const heroRef    = useHeroAnimation();
-  const trustRef   = useScrollFadeUp();
+  const heroRef = useHeroAnimation();
+  const trustRef = useScrollFadeUp();
   const roadmapRef = useStaggerReveal();
-  const whyRef     = useStaggerReveal();
-  const uniRef     = useCardReveal();
+  const whyRef = useStaggerReveal();
+  const uniRef = useCardReveal();
   const founderRef = useSplitReveal();
 
   return (
@@ -302,7 +302,7 @@ export default function HomePage() {
                 <div className="absolute bottom-6 left-6 bg-navy/85 backdrop-blur-sm rounded-md p-4 border border-gold/30">
                   <div className="flex items-center gap-3">
                     <div className="relative w-9 h-9 shrink-0">
-                      <img src="/logo.png" alt="Nova-Turk Education" className="w-full h-full object-contain" />
+                      <img src="/app-logo.png" alt="Nova-Turk Education" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <div className="text-white font-bold text-[0.9rem]">Nova-Turk</div>
@@ -341,7 +341,7 @@ export default function HomePage() {
               </div>
 
               <Link href="/about" className="btn-gold normal-case">
-                Read the Full Message 
+                Read the Full Message
               </Link>
             </div>
           </div>
@@ -356,7 +356,7 @@ export default function HomePage() {
           onClick={() => setPopupOpen(true)}
           className="bg-[#C62828] text-white cursor-pointer font-bold hover:bg-[#a81e1e] [writing-mode:vertical-rl] py-4 px-3 rounded-l rounded-r-none text-lg tracking-[0.08em] normal-case"
         >
-          Apply Now 
+          Apply Now
         </button>
       </div>
 
