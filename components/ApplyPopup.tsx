@@ -17,6 +17,8 @@ interface ApplyPopupProps {
 
 export default function ApplyPopup({ open, onClose, prefilledProgram }: ApplyPopupProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -61,10 +63,28 @@ export default function ApplyPopup({ open, onClose, prefilledProgram }: ApplyPop
     setForm((f) => ({ ...f, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.degree) return;
-    setSubmitted(true);
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(data.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleReset = () => {
@@ -111,6 +131,11 @@ export default function ApplyPopup({ open, onClose, prefilledProgram }: ApplyPop
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded px-3 py-2">
+                  {error}
+                </p>
+              )}
               {/* Name Row */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
@@ -226,9 +251,10 @@ export default function ApplyPopup({ open, onClose, prefilledProgram }: ApplyPop
 
               <button
                 type="submit"
-                className="w-full mt-2 inline-flex items-center justify-center bg-red hover:bg-red-hover text-white font-bold text-base py-3 rounded cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                disabled={loading}
+                className="w-full mt-2 inline-flex items-center justify-center bg-red hover:bg-red-hover text-white font-bold text-base py-3 rounded cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-70 disabled:pointer-events-none"
               >
-                Light My Path →
+                {loading ? "Sending…" : "Light My Path →"}
               </button>
             </form>
           </>

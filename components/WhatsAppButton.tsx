@@ -3,7 +3,7 @@
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/92XXXXXXXXXX?text=Hello%20Nova-Turk%20Education%2C%20I%27d%20like%20to%20inquire%20about%20studying%20in%20T%C3%BCrkiye."
+      href="https://wa.me/923375891105?text=Hello%20Nova-Turk%20Education%2C%20I%27d%20like%20to%20inquire%20about%20studying%20in%20T%C3%BCrkiye."
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-float"

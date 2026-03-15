@@ -15,6 +15,8 @@ const steps = ["Your Details", "Academic Interest"];
 export default function ApplyPage() {
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -44,10 +46,28 @@ export default function ApplyPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(data.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const progress = step === 0 ? 50 : 100;
@@ -149,6 +169,12 @@ export default function ApplyPage() {
                     <h2 className="text-[1.4rem] font-bold text-navy mb-1">Step 2: Academic Interest</h2>
                     <p className="text-[0.88rem] text-[#888] mb-8">Help us match you with the right program and university.</p>
 
+                    {error && (
+                      <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded px-3 py-2 mb-4">
+                        {error}
+                      </p>
+                    )}
+
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-3">
                         <div>
@@ -226,9 +252,9 @@ export default function ApplyPage() {
                         className="flex-1 inline-flex items-center justify-center border-2 border-gold text-gold hover:bg-gold hover:text-navy font-bold text-sm py-3 rounded cursor-pointer transition-all duration-200">
                         ← Back
                       </button>
-                      <button type="submit"
-                        className="flex-2 inline-flex items-center justify-center bg-red hover:bg-red-hover text-white font-bold text-base py-3 rounded cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-                        Begin My Journey →
+                      <button type="submit" disabled={loading}
+                        className="flex-2 inline-flex items-center justify-center bg-red hover:bg-red-hover text-white font-bold text-base py-3 rounded cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-70 disabled:pointer-events-none">
+                        {loading ? "Sending…" : "Begin My Journey →"}
                       </button>
                     </div>
                   </form>
