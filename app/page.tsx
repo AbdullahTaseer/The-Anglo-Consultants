@@ -298,18 +298,6 @@ export default function HomePage() {
                   className="w-full h-95 object-cover"
                 />
                 <div className="absolute inset-0 image-overlay-gradient" />
-                {/* Overlay Logo */}
-                <div className="absolute bottom-6 left-6 bg-navy/85 backdrop-blur-sm rounded-md p-4 border border-gold/30">
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-9 h-9 shrink-0">
-                      <img src="/app-logo.png" alt="Nova-Turk Education" className="w-full h-full object-contain" />
-                    </div>
-                    <div>
-                      <div className="text-white font-bold text-[0.9rem]">Nova-Turk</div>
-                      <div className="text-gold text-[0.65rem] tracking-[0.08em]">Education</div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 

@@ -18,6 +18,10 @@ export const metadata: Metadata = {
     "Lighting the path to Turkish Academia. Islamabad's exclusive bridge to Undergraduate, Postgraduate, and PhD programs in Türkiye. Start your journey today.",
   keywords:
     "study in Turkey, Turkish universities, Pakistan education consultant, Islamabad Turkey consultant, undergraduate Turkey, postgraduate Turkey, PhD Turkey",
+  icons: {
+    icon: "/app-logo.png",
+    apple: "/app-logo.png",
+  },
   openGraph: {
     title: "Nova-Turk Education | Specialist Turkish Education Consultants",
     description:
