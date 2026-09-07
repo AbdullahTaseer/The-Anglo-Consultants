@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import ApplyPopup from "./ApplyPopup";
-import appLogo from "@/public/app-logo.png";
+import appLogo from "@/public/logo-mark.png";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -31,7 +31,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-              <Image src={appLogo} alt="Nova-Turk Education" priority height={80} />
+              <Image src={appLogo} alt="The Anglo Consultants" priority height={80} />
           </Link>
 
           {/* Desktop Links */}

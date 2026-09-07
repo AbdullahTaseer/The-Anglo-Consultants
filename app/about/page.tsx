@@ -50,7 +50,7 @@ export default function AboutPage() {
       <div ref={heroRef} className="about-hero-bg pt-24 pb-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center gs-hero">
           <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">
-            About Nova-Turk
+            About The Anglo Consultants
           </div>
           <h1 className="font-display text-[clamp(2.2rem,5vw,3.8rem)] font-bold text-white mt-4 mb-5 leading-[1.15]">
             More Than a Consultancy—
@@ -73,16 +73,16 @@ export default function AboutPage() {
             <div className="gs-left">
               <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Who We Are</div>
               <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline mt-2 mb-6">
-                Nova-Turk Education
+                The Anglo Consultants
               </h2>
               <p className="text-[#555] leading-[1.85] text-base mb-5">
-                Nova-Turk Education is a specialized education consultancy headquartered in Islamabad, Pakistan, dedicated exclusively to facilitating student admissions to universities in Türkiye. We serve as a bridge between Pakistani students seeking quality international education and Turkish universities offering globally recognized academic programs.
+                The Anglo Consultants is a specialized education consultancy headquartered in Islamabad, Pakistan, dedicated exclusively to facilitating student admissions to universities in Türkiye. We serve as a bridge between Pakistani students seeking quality international education and Turkish universities offering globally recognized academic programs.
               </p>
               <p className="text-[#555] leading-[1.85] text-base mb-5">
                 We provide structured guidance to prospective students applying to Undergraduate, Master&apos;s, and Doctoral programs. Our team supports applicants throughout the entire process—including program selection, application preparation, documentation support, and pre-departure guidance.
               </p>
               <p className="text-[#555] leading-[1.85] text-base">
-                By focusing entirely on Türkiye, Nova-Turk Education has developed detailed knowledge of admission procedures, academic expectations, and student requirements within Turkish universities.
+                By focusing entirely on Türkiye, The Anglo Consultants has developed detailed knowledge of admission procedures, academic expectations, and student requirements within Turkish universities.
               </p>
             </div>
             <div className="gs-right relative">
@@ -110,7 +110,7 @@ export default function AboutPage() {
             Built on Conviction
           </h2>
           <p className="text-[#555] leading-[1.85] text-[1.05rem] max-w-180 mx-auto">
-            Nova-Turk Education was founded on a singular conviction: <strong>student success is more than admission—it is fulfillment.</strong> Built through dedicated experience within Türkiye's education ecosystem, the company was established to remove uncertainty, reduce risk, and simplify every step of the journey for students and parents.
+            The Anglo Consultants was founded on a singular conviction: <strong>student success is more than admission—it is fulfillment.</strong> Built through dedicated experience within Türkiye's education ecosystem, the company was established to remove uncertainty, reduce risk, and simplify every step of the journey for students and parents.
           </p>
         </div>
       </section>
@@ -130,7 +130,7 @@ export default function AboutPage() {
                 <div className="text-gold text-[1.4rem] font-bold">
                   Founder & CEO
                 </div>
-                <div className="text-white font-semibold mt-1">Nova-Turk Education</div>
+                <div className="text-white font-semibold mt-1">The Anglo Consultants</div>
                 <div className="text-white/50 text-[0.8rem] mt-0.5">Islamabad, Pakistan</div>
               </div>
             </div>
@@ -147,11 +147,11 @@ export default function AboutPage() {
               <div className="border-l-2 border-gold/50 pl-6">
                 {[
                   "Every great journey begins with a spark of inspiration, but for a student, that spark is often a deeply personal and sacred dream.",
-                  "At Nova-Turk Education, we don't just process applications—we ignite futures. We understand that behind every application is a parent's hope and a student's lifelong ambition. We recognize that when a student walks through our doors in Islamabad, they aren't just bringing us documents; they are entrusting us with their aspirations, their fears, and their highest ambitions.",
+                  "At The Anglo Consultants, we don't just process applications—we ignite futures. We understand that behind every application is a parent's hope and a student's lifelong ambition. We recognize that when a student walks through our doors in Islamabad, they aren't just bringing us documents; they are entrusting us with their aspirations, their fears, and their highest ambitions.",
                   "We understand how 'touchy' and sensitive this stage of life is. We know that behind every dream of studying in Türkiye, there is a heart full of eagerness and a mind seeking a place where it truly belongs.",
                   "Our mission was born from this very understanding. Having dedicated years to the Turkish academic landscape, we have seen firsthand that a student's success is not merely a matter of admission—it is a matter of fulfillment. We don't just see Undergraduate, Postgraduate, or PhD programs as academic milestones; we see them as the realization of a lifelong inspiration.",
                   "We take this responsibility personally. We know the weight of a parent's trust and the vulnerability of a student's ambition. That is why we have chosen to specialize exclusively in Türkiye—to ensure that our guidance is not just 'broad,' but 'perfect.'",
-                  "At Nova-Turk, our promise is simple yet profound: We see your light, and we will ensure it shines. We are committed to lighting your path until your aspirations find their home in the historic and vibrant campuses of Türkiye.",
+                  "At The Anglo Consultants, our promise is simple yet profound: We see your light, and we will ensure it shines. We are committed to lighting your path until your aspirations find their home in the historic and vibrant campuses of Türkiye.",
                 ].map((para, i) => (
                   <p
                     key={i}
@@ -166,13 +166,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Nova Standard Values */}
+      {/* Anglo Standard Values */}
       <section ref={valuesRef as React.RefObject<HTMLElement>} className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 gs-stagger">
             <div className="inline-block bg-navy/8 text-navy text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">Core Values</div>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline-center mt-2">
-              The "Nova" Standard
+              The "Anglo" Standard
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -207,7 +207,7 @@ export default function AboutPage() {
                 Our Expertise & Key Achievements
               </h2>
               <p className="text-[#555] leading-[1.85] mb-8">
-                Nova-Turk Education does not simply "place" students—we mentor them. Our specialization and experience allow us to navigate Turkish academic systems with precision and confidence.
+                The Anglo Consultants does not simply "place" students—we mentor them. Our specialization and experience allow us to navigate Turkish academic systems with precision and confidence.
               </p>
               <div className="space-y-5">
                 {achievements.map((ach) => (
@@ -298,21 +298,21 @@ export default function AboutPage() {
             Experienced Counseling Team
           </h2>
           <p className="text-[#555] text-[1.05rem] leading-[1.8]">
-            Nova-Turk Education is supported by a team of experienced student counselors who guide applicants in selecting appropriate academic programs and preparing complete university applications. Our counselors assist students at every stage of the admission process, ensuring that applications meet university requirements and deadlines.
+            The Anglo Consultants is supported by a team of experienced student counselors who guide applicants in selecting appropriate academic programs and preparing complete university applications. Our counselors assist students at every stage of the admission process, ensuring that applications meet university requirements and deadlines.
           </p>
         </div>
       </section>
 
-      {/* Why Partner With Nova-Turk (For Universities) */}
+      {/* Why Partner With The Anglo Consultants (For Universities) */}
       <section className="bg-navy py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 gs-stagger">
             <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">For Universities</div>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-white leading-tight gold-underline-center mt-2">
-              Why Partner With Nova-Turk Education
+              Why Partner With The Anglo Consultants
             </h2>
             <p className="text-white/75 max-w-135 mx-auto mt-5 leading-[1.7]">
-              Nova-Turk Education aims to build long-term institutional relationships with Turkish universities by supporting the recruitment of qualified Pakistani students.
+              The Anglo Consultants aims to build long-term institutional relationships with Turkish universities by supporting the recruitment of qualified Pakistani students.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -332,7 +332,7 @@ export default function AboutPage() {
           <div className="text-center p-6 rounded-lg bg-white/5 border border-gold/20 max-w-3xl mx-auto gs-fade">
             <h3 className="text-gold font-bold text-lg mb-3">Partnership Objective</h3>
             <p className="text-white/85 leading-[1.75]">
-              Nova-Turk Education seeks to collaborate with Turkish universities to promote their academic programs among Pakistani students and support the enrollment of qualified applicants into undergraduate and postgraduate programs.
+              The Anglo Consultants seeks to collaborate with Turkish universities to promote their academic programs among Pakistani students and support the enrollment of qualified applicants into undergraduate and postgraduate programs.
             </p>
           </div>
         </div>

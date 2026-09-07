@@ -13,26 +13,26 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Nova-Turk Education | Specialist Turkish Education Consultants",
+  title: "The Anglo Consultants | Specialist Turkish Education Consultants",
   description:
     "Lighting the path to Turkish Academia. Islamabad's exclusive bridge to Undergraduate, Postgraduate, and PhD programs in Türkiye. Start your journey today.",
   keywords:
     "study in Turkey, Turkish universities, Pakistan education consultant, Islamabad Turkey consultant, undergraduate Turkey, postgraduate Turkey, PhD Turkey",
   icons: {
-    icon: "/app-logo.png",
-    apple: "/app-logo.png",
+    icon: "/logo-mark.png",
+    apple: "/logo-mark.png",
   },
   openGraph: {
-    title: "Nova-Turk Education | Specialist Turkish Education Consultants",
+    title: "The Anglo Consultants | Specialist Turkish Education Consultants",
     description:
       "Lighting the path to Turkish Academia. Islamabad's exclusive bridge to Undergraduate, Postgraduate, and PhD programs in Türkiye.",
     type: "website",
     locale: "en_US",
-    siteName: "Nova-Turk Education",
+    siteName: "The Anglo Consultants",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nova-Turk Education | Study in Türkiye",
+    title: "The Anglo Consultants | Study in Türkiye",
     description: "Pakistan's premier Türkiye-only education consultancy. Expert guidance for UG, PG & PhD admissions.",
   },
 };

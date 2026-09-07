@@ -42,12 +42,12 @@ function buildEmailHtml(body: ApplyFormPayload): string {
 <html>
 <head><meta charset="utf-8"></head>
 <body style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:24px;">
-  <h2 style="color:#0B1C2D;">New application – Nova Turk Education</h2>
+  <h2 style="color:#0B1C2D;">New application – The Anglo Consultants</h2>
   <p style="color:#555;">A new application form has been submitted.</p>
   <table style="width:100%;border-collapse:collapse;">
     ${tableRows}
   </table>
-  <p style="margin-top:24px;color:#888;font-size:12px;">Sent from Nova Turk Education website.</p>
+  <p style="margin-top:24px;color:#888;font-size:12px;">Sent from The Anglo Consultants website.</p>
 </body>
 </html>`;
 }

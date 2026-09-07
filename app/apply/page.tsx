@@ -265,9 +265,9 @@ export default function ApplyPage() {
             /* Confirmation */
             <div className="bg-white rounded-xl border border-navy/10 shadow-[0_20px_60px_rgba(11,28,45,0.08)] px-8 py-16 sm:px-12 text-center">
               <div className="w-18 h-18 rounded-full bg-gold/12 border-2 border-gold flex items-center justify-center mx-auto mb-6 text-[1.8rem]">✓</div>
-              <h2 className="text-[2rem] font-bold text-navy mb-3">Welcome to the Nova-Turk Family, {form.firstName}!</h2>
+              <h2 className="text-[2rem] font-bold text-navy mb-3">Welcome to The Anglo Consultants Family, {form.firstName}!</h2>
               <p className="text-[#555] leading-relaxed mb-4 text-[1.05rem]">
-                A Nova-Turk Specialist will contact you on WhatsApp within <strong>24 hours</strong> to discuss your admission journey.
+                A Specialist from The Anglo Consultants will contact you on WhatsApp within <strong>24 hours</strong> to discuss your admission journey.
               </p>
               {form.program && (
                 <div className="bg-navy/4 border border-navy/10 rounded-md px-4 py-3 mb-6 text-left">
@@ -276,7 +276,7 @@ export default function ApplyPage() {
                 </div>
               )}
               <blockquote className="text-[1.05rem] text-navy italic leading-relaxed border-l-[3px] border-gold pl-5 text-left my-8">
-                &ldquo;Your dream is no longer yours alone; from today, it is our shared mission. Welcome to Nova-Turk.&rdquo;
+                &ldquo;Your dream is no longer yours alone; from today, it is our shared mission. Welcome to The Anglo Consultants.&rdquo;
               </blockquote>
               <div className="flex flex-wrap gap-3 justify-center">
                 <a href="/" className="inline-flex items-center justify-center bg-navy hover:bg-navy-light text-white font-bold px-6 py-3 rounded transition-colors">Back to Home</a>
@@ -287,10 +287,10 @@ export default function ApplyPage() {
         </div>
       </section>
 
-      {/* Why Apply Through Nova-Turk */}
+      {/* Why Apply Through The Anglo Consultants */}
       <section ref={whyRef as React.RefObject<HTMLElement>} className="bg-navy py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold text-white mb-10 gs-stagger">Why Apply Through Nova-Turk?</h2>
+          <h2 className="text-center text-[clamp(1.5rem,3vw,2rem)] font-bold text-white mb-10 gs-stagger">Why Apply Through The Anglo Consultants?</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { Icon: Target,        title: "100% Türkiye Focus", desc: "No generalist advice. Deep Turkish academic expertise." },

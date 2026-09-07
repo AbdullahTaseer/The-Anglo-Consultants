@@ -179,7 +179,7 @@ export default function HomePage() {
               Our Proven Process
             </div>
             <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-white leading-tight gold-underline-center mt-2">
-              The Nova-Turk 6-Step Success Roadmap
+              The Anglo Consultants 6-Step Success Roadmap
             </h2>
             <p className="text-white/65 max-w-135 mx-auto mt-5 leading-[1.7]">
               A structured, mentor-led journey from your first consultation to your first day on a Turkish campus.
@@ -321,7 +321,7 @@ export default function HomePage() {
 
               <div className="mb-8">
                 <div className="text-white font-bold text-[0.9rem]">
-                  Founder & CEO, Nova-Turk Education
+                  Founder & CEO, The Anglo Consultants
                 </div>
                 <div className="text-white/50 text-[0.8rem] mt-1">
                   Islamabad, Pakistan

@@ -126,7 +126,7 @@ export default function ApplyPopup({ open, onClose, prefilledProgram }: ApplyPop
                 </h2>
               </div>
               <p className="text-sm ml-3 text-[#666]">
-                Fill in your details and a Nova-Turk advisor will contact you within 24 hours.
+                Fill in your details and an advisor from The Anglo Consultants will contact you within 24 hours.
               </p>
             </div>
 
@@ -267,7 +267,7 @@ export default function ApplyPopup({ open, onClose, prefilledProgram }: ApplyPop
               Thank you, {form.firstName}!
             </h3>
             <p className="mb-1 text-[#555]">
-              A Nova-Turk Specialist will contact you on WhatsApp within 24 hours.
+              A Specialist from The Anglo Consultants will contact you on WhatsApp within 24 hours.
             </p>
             {form.program && (
               <p className="text-sm font-semibold text-[#D4AF37]">
