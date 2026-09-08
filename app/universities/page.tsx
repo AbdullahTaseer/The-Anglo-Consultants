@@ -112,7 +112,7 @@ export default function UniversitiesPage() {
 
           {/* Stats row */}
           <div className="inline-flex flex-wrap justify-center gap-8 sm:gap-14 border-t border-white/10 pt-8">
-            <StatItem value={universities.length} label="Partner Universities" />
+            <StatItem value={35} suffix="+" label="Partner Universities" />
             <StatItem value={totalPrograms} suffix="+" label="Programs Offered" />
             <StatItem value={cities.length - 1} label="Cities Covered" />
           </div>

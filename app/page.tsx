@@ -117,7 +117,7 @@ export default function HomePage() {
             <div className="mt-14 flex max-sm:justify-between sm:gap-8">
               {[
                 { val: "100%", label: "Türkiye Focused" },
-                { val: "16+", label: "Partner Universities" },
+                { val: "35+", label: "Partner Universities" },
                 { val: "UG·PG·PhD", label: "All Degree Levels" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
@@ -263,7 +263,7 @@ export default function HomePage() {
               <h2 className="text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-navy leading-tight gold-underline mt-2">Featured Universities</h2>
             </div>
             <Link href="/universities" className="btn-navy text-sm normal-case whitespace-nowrap">
-              View All 16+ Universities →
+              View All 35+ Universities →
             </Link>
           </div>
 
