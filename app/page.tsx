@@ -92,7 +92,7 @@ export default function HomePage() {
           {/* gs-hero: GSAP animates direct children with stagger */}
           <div className="max-w-3xl gs-hero">
             <div className="inline-block bg-gold/15 text-gold text-xs font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-sm mb-4">
-              Islamabad · Türkiye · Excellence
+              Lahore · Türkiye · Excellence
             </div>
 
             <h1 className="font-display text-[clamp(2.6rem,5.5vw,4.4rem)] font-bold text-white leading-tight mb-6">
@@ -324,7 +324,7 @@ export default function HomePage() {
                   Founder & CEO, The Anglo Consultants
                 </div>
                 <div className="text-white/50 text-[0.8rem] mt-1">
-                  Islamabad, Pakistan
+                  Lahore, Pakistan
                 </div>
               </div>
 

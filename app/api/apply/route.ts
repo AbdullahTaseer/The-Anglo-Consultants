@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 
-const TO_EMAIL = "info@novaturkedu.com";
+const TO_EMAIL = "info@theangloconsultants.com";
 
 export interface ApplyFormPayload {
   firstName: string;
@@ -53,7 +53,7 @@ function buildEmailHtml(body: ApplyFormPayload): string {
 }
 
 function getTransporter() {
-  // Use SMTP for info@novaturkedu.com (or any custom-domain email)
+  // Use SMTP for info@theangloconsultants.com (or any custom-domain email)
   const host = process.env.SMTP_HOST;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASSWORD;
@@ -84,7 +84,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Email not configured. Set SMTP_HOST, SMTP_USER (e.g. info@novaturkedu.com), and SMTP_PASSWORD in .env.local",
+          "Email not configured. Set SMTP_HOST, SMTP_USER (e.g. info@theangloconsultants.com), and SMTP_PASSWORD in .env.local",
       },
       { status: 500 }
     );
@@ -104,7 +104,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const fromAddress = process.env.SMTP_USER ?? process.env.GMAIL_USER ?? "info@novaturkedu.com";
+  const fromAddress = process.env.SMTP_USER ?? process.env.GMAIL_USER ?? "info@theangloconsultants.com";
 
   try {
     await transporter.sendMail({

@@ -27,7 +27,7 @@ const values = [
 ];
 
 const achievements = [
-  { Icon: Landmark,      title: "Dedicated Model",        desc: "Established a dedicated, Türkiye-only advisory model in Pakistan—the first of its kind in Islamabad." },
+  { Icon: Landmark,      title: "Dedicated Model",        desc: "Established a dedicated, Türkiye-only advisory model in Pakistan—the first of its kind in Lahore." },
   { Icon: Handshake,     title: "Strategic Partnerships", desc: "Built deep, direct partnerships with leading foundation universities across Türkiye." },
   { Icon: GraduationCap, title: "Successful Placements",  desc: "Enabled admissions across Engineering, Medicine, Business, Arts & Social Sciences at UG, PG, and PhD levels." },
   { Icon: ClipboardList, title: "Golden File Process",    desc: "Developed our signature 'Golden File' documentation standard—zero-error consulate-grade submissions." },
@@ -76,7 +76,7 @@ export default function AboutPage() {
                 The Anglo Consultants
               </h2>
               <p className="text-[#555] leading-[1.85] text-base mb-5">
-                The Anglo Consultants is a specialized education consultancy headquartered in Islamabad, Pakistan, dedicated exclusively to facilitating student admissions to universities in Türkiye. We serve as a bridge between Pakistani students seeking quality international education and Turkish universities offering globally recognized academic programs.
+                The Anglo Consultants is a specialized education consultancy headquartered in Lahore, Pakistan, dedicated exclusively to facilitating student admissions to universities in Türkiye. We serve as a bridge between Pakistani students seeking quality international education and Turkish universities offering globally recognized academic programs.
               </p>
               <p className="text-[#555] leading-[1.85] text-base mb-5">
                 We provide structured guidance to prospective students applying to Undergraduate, Master&apos;s, and Doctoral programs. Our team supports applicants throughout the entire process—including program selection, application preparation, documentation support, and pre-departure guidance.
@@ -131,7 +131,7 @@ export default function AboutPage() {
                   Founder & CEO
                 </div>
                 <div className="text-white font-semibold mt-1">The Anglo Consultants</div>
-                <div className="text-white/50 text-[0.8rem] mt-0.5">Islamabad, Pakistan</div>
+                <div className="text-white/50 text-[0.8rem] mt-0.5">Lahore, Pakistan</div>
               </div>
             </div>
 
@@ -147,7 +147,7 @@ export default function AboutPage() {
               <div className="border-l-2 border-gold/50 pl-6">
                 {[
                   "Every great journey begins with a spark of inspiration, but for a student, that spark is often a deeply personal and sacred dream.",
-                  "At The Anglo Consultants, we don't just process applications—we ignite futures. We understand that behind every application is a parent's hope and a student's lifelong ambition. We recognize that when a student walks through our doors in Islamabad, they aren't just bringing us documents; they are entrusting us with their aspirations, their fears, and their highest ambitions.",
+                  "At The Anglo Consultants, we don't just process applications—we ignite futures. We understand that behind every application is a parent's hope and a student's lifelong ambition. We recognize that when a student walks through our doors in Lahore, they aren't just bringing us documents; they are entrusting us with their aspirations, their fears, and their highest ambitions.",
                   "We understand how 'touchy' and sensitive this stage of life is. We know that behind every dream of studying in Türkiye, there is a heart full of eagerness and a mind seeking a place where it truly belongs.",
                   "Our mission was born from this very understanding. Having dedicated years to the Turkish academic landscape, we have seen firsthand that a student's success is not merely a matter of admission—it is a matter of fulfillment. We don't just see Undergraduate, Postgraduate, or PhD programs as academic milestones; we see them as the realization of a lifelong inspiration.",
                   "We take this responsibility personally. We know the weight of a parent's trust and the vulnerability of a student's ambition. That is why we have chosen to specialize exclusively in Türkiye—to ensure that our guidance is not just 'broad,' but 'perfect.'",
@@ -224,12 +224,12 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Islamabad Office */}
+            {/* Lahore Office */}
             <div className="gs-right">
               <div className="rounded-lg overflow-hidden shadow-[0_20px_60px_rgba(11,28,45,0.12)]">
                 <img
                   src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80"
-                  alt="Islamabad Office"
+                  alt="Lahore Office"
                   className="w-full h-65 object-cover"
                 />
                 <div className="bg-navy p-8">
@@ -237,10 +237,10 @@ export default function AboutPage() {
                     Our Local Presence
                   </div>
                   <h3 className="text-white text-[1.2rem] font-bold mb-3">
-                    Islamabad Headquarters
+                    Lahore Headquarters
                   </h3>
                   <p className="text-white/70 text-[0.9rem] leading-[1.65] mb-5">
-                    Visit us at our Islamabad headquarters for a face-to-face consultation. We believe in the power of a personal handshake—because some conversations change lives.
+                    Visit us at our Lahore headquarters for a face-to-face consultation. We believe in the power of a personal handshake—because some conversations change lives.
                   </p>
                   <button
                     onClick={() => setPopupOpen(true)}

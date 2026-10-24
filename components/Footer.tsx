@@ -92,7 +92,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="shrink-0 mt-0.5 text-gold" />
                 <span className="text-sm leading-relaxed text-gray-600">
-                  Islamabad, Pakistan
+                  Lahore, Pakistan
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -103,8 +103,8 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={16} className="shrink-0 mt-0.5 text-gold" />
-                <a href="mailto:info@novaturkedu.com" className="text-sm text-gray-600 hover:text-navy transition-colors">
-                  info@novaturkedu.com
+                <a href="mailto:info@theangloconsultants.com" className="text-sm text-gray-600 hover:text-navy transition-colors">
+                  info@theangloconsultants.com
                 </a>
               </li>
             </ul>
@@ -117,7 +117,7 @@ export default function Footer() {
         <div className="border-t border-gray-200 py-5">
           <div className="flex flex-col gap-1.5 text-center sm:flex-row sm:justify-between sm:text-left">
             <p className="text-xs text-gray-500">
-              © 2026 The Anglo Consultants. All rights reserved. · Islamabad, Pakistan
+              © 2026 The Anglo Consultants. All rights reserved. · Lahore, Pakistan
             </p>
             <p className="text-xs text-gray-500">
               Degrees recognized by{" "}
